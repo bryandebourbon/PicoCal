@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+Info.plist
+PicoCal
+
+Created by Bryan de Bourbon on 2/12/24.
+Copyright (c) 2024 ___ORGANIZATIONNAME___.
+-->
+<plist version="1.0">
+  <dict>
+    <key>NSHealthShareUsageDescription</key>
+    <string>PicoCal needs access to your active energy burned data to help you track your fitness progress and activity levels.</string>
+  </dict>
+</plist>

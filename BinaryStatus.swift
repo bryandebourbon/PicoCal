@@ -17,7 +17,11 @@ struct BinaryStatus: View {
           }
         }
       }
-      // If there is additional logic for the else case, add it here
+      // If there 
+
+
+
+      //is additional logic for the else case, add it here
     }
   }
 }

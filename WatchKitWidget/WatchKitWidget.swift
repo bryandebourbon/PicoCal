@@ -30,17 +30,13 @@ struct Provider: TimelineProvider {
   }
 
    func fetchSharedData(completion: @escaping (SimpleEntry) -> Void) {
-//     let userDefaults = UserDefaults(suiteName: "groups.com.bryandebourbon.shared")
+     let ( goalDays, calorieDays) = SharedUserDefaults.shared.retrieveEvents()
 
-//     // Fetch the Bool array for calorieFlags
-//     if let savedCalorieFlags = userDefaults?.array(forKey: "CalorieFlagsKey") as? [Bool] {
-//       healthData.calorieFlags = savedCalorieFlags
-//     }
 
     // Continue with your existing data fetching logic
     EventKitFetcher.fetchEvents { ekEvents in
       let wrappedEvents = ekEvents.map(EventWrapper.init)
-      let entry = SimpleEntry(date: Date(), events: wrappedEvents, goalDays: [], hasContributionToday: false, calorieDays: [])
+      let entry = SimpleEntry(date: Date(), events: wrappedEvents, goalDays: goalDays, hasContributionToday: false, calorieDays: calorieDays)
       completion(entry)
     }
   }

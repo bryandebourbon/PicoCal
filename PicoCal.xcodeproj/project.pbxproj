@@ -629,12 +629,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = PicoCalWatch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"WatchKitApp/Preview Content\"";
 				DEVELOPMENT_TEAM = VZPMV36P9L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WatchKitApp/Info.plist;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "PicoCal needs access to your active energy burned data to help you track your fitness progress and activity levels.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.bryandebourbon.Calendar.iOSApp;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
@@ -642,7 +643,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6.0;
+				MARKETING_VERSION = 7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bryandebourbon.Calendar.iOSApp.WatchKitApp;
 				PRODUCT_NAME = PicoCalWatch;
 				SDKROOT = watchos;
@@ -662,12 +663,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = PicoCalWatch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"WatchKitApp/Preview Content\"";
 				DEVELOPMENT_TEAM = VZPMV36P9L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WatchKitApp/Info.plist;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "PicoCal needs access to your active energy burned data to help you track your fitness progress and activity levels.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.bryandebourbon.Calendar.iOSApp;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
@@ -675,7 +677,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6.0;
+				MARKETING_VERSION = 7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bryandebourbon.Calendar.iOSApp.WatchKitApp;
 				PRODUCT_NAME = PicoCalWatch;
 				SDKROOT = watchos;
@@ -696,7 +698,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = PicoCaliOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"iOSApp/Preview Content\"";
 				DEVELOPMENT_TEAM = VZPMV36P9L;
 				ENABLE_PREVIEWS = YES;
@@ -714,7 +716,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6.0;
+				MARKETING_VERSION = 7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bryandebourbon.Calendar.iOSApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -736,7 +738,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = PicoCaliOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"iOSApp/Preview Content\"";
 				DEVELOPMENT_TEAM = VZPMV36P9L;
 				ENABLE_PREVIEWS = YES;
@@ -754,7 +756,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6.0;
+				MARKETING_VERSION = 7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bryandebourbon.Calendar.iOSApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;

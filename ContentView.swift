@@ -9,6 +9,8 @@ struct ContentView: View {
   @State var goalDays: [Bool] = []
   @State var hasContributionToday: Bool = false  // New state variable
 
+ let store = SharedUserDefaults()
+
   let gitHubFetcher = GitHubDataFetcher()
   let eventKitFetcher = EventKitFetcher()
 
@@ -18,16 +20,16 @@ struct ContentView: View {
    VStack {
     CurrentDateView()
     CalendarView(
-
-      hasContributionToday: $hasContributionToday,
+     hasContributionToday: $hasContributionToday,
      eventDays: $eventDays,
-     goalDays: $goalDays, calorieDays: $healthKitVM.calorieFlags
+     goalDays: $goalDays,
+     calorieDays: $healthKitVM.calorieFlags
     )
     .frame(maxWidth: 180, maxHeight: 77)
 
-//    Button("⬇️") {
-//     healthKitVM.fetchCaloriesBurnedForCurrentMonth()
-//    }
+    Button("🔄") {
+     store.saveEvents(goalDays, calorieDays: healthKitVM.calorieFlags)
+    }
    }
     .onAppear {
       eventKitFetcher.initializeEventStore { granted, events, error in
@@ -49,6 +51,7 @@ struct ContentView: View {
           self.goalDays = Array(repeating: false, count: 30)
           self.hasContributionToday = false
         }
+       store.saveEvents(goalDays, calorieDays: healthKitVM.calorieFlags)
       }
     }
   }

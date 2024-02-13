@@ -5,7 +5,7 @@ struct LoadingBar: View {
 
   let total: CGFloat
   let caloriesToday: CGFloat
-  var color: Color = .blue.opacity(0.5)
+  var color: Color = Color(.red).opacity(0.5)
 
   var body: some View {
 

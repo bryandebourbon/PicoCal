@@ -292,7 +292,7 @@ struct CalendarView<Events: Sequence>: View where Events.Element: EventRepresent
               BinaryStatus(
                 isToday: isToday, position: position,
                 hasContributionToday: $hasContributionToday)
-              LoadingBar(total: 1000, caloriesToday: 500, color: .blue)
+              LoadingBar(total: 1000, caloriesToday: 500, color: Color(.red))
             }
 
           }
@@ -315,7 +315,7 @@ struct CalendarView<Events: Sequence>: View where Events.Element: EventRepresent
         }.frame(maxHeight: .infinity)
 
         Rectangle().fill(shouldFillGreen ? Color.green : Color.black).opacity(isPast ? 0.4 : 0)
-        Rectangle().fill(shouldFillBlue ? Color.blue : Color.black).opacity(isPast ? 0.4 : 0)
+        Rectangle().fill(shouldFillBlue ? Color(.red) : Color.black).opacity(isPast ? 0.4 : 0)
 
         //        TimeStaff(isToday: isToday)
 

@@ -62,7 +62,7 @@ struct CalendarView<Events: Sequence>: View where Events.Element: EventRepresent
 
       let position = calculateCurrentDayPosition()
       let xPosition = CGFloat(position.column) * (blockWidth + padding)
-      let yPosition = CGFloat(position.row) * blockHeight
+      let yPosition = CGFloat(position.row) * blockHeight + 4
 
       ZStack {
         CalendarGrid(
@@ -292,7 +292,7 @@ struct CalendarView<Events: Sequence>: View where Events.Element: EventRepresent
               BinaryStatus(
                 isToday: isToday, position: position,
                 hasContributionToday: $hasContributionToday)
-              LoadingBar(total: 1000, caloriesToday: 500, color: Color(.red))
+//              LoadingBar(total: 1000, caloriesToday: 500, color: Color(.red))
             }
 
           }
@@ -315,7 +315,7 @@ struct CalendarView<Events: Sequence>: View where Events.Element: EventRepresent
         }.frame(maxHeight: .infinity)
 
         Rectangle().fill(shouldFillGreen ? Color.green : Color.black).opacity(isPast ? 0.4 : 0)
-        Rectangle().fill(shouldFillBlue ? Color(.red) : Color.black).opacity(isPast ? 0.4 : 0)
+        Rectangle().fill(shouldFillBlue ? Color(.green) : Color.clear).opacity(isPast ? 0.4 : 0)
 
         //        TimeStaff(isToday: isToday)
 
@@ -378,7 +378,7 @@ struct CalendarGrid: View {
         }
       }
     }
-    .offset(x: -8, y: -7)
+    .offset(x: -8, y: -4)
   }
 }
 
@@ -389,36 +389,80 @@ struct CurrentDayIndicator: View {
   let blockHeight: CGFloat
   let blockWidth: CGFloat
   let currentDay: Int
-
+  let color: Color = Color.red
+  let backgroundColor = Color.black
+  let emoji: String = ""
+  
   var body: some View {
     ZStack {
       // The line indicator
-      Rectangle().fill(.black).opacity(0.2)
-        .frame(width: 5, height: blockHeight)
-        .position(x: xPosition + hourOffset, y: yPosition + 7)
+      Rectangle().fill(.black)
+        .frame(width: 6, height: 6)
+        .opacity(0.3)
+        .position(x: xPosition + hourOffset, y: yPosition )
       Rectangle()
-        .fill(Color("today"))
-        .frame(width: 2, height: blockHeight)
-        .opacity(0.8)
-        .position(x: xPosition + hourOffset, y: yPosition + blockHeight / 2 )
-
-      // The circular indicators
-      Circle()
-        .fill(Color.black)
-        .frame(width: 9, height: 9)
-        .opacity(0.5)
-        .position(x: xPosition + hourOffset, y: yPosition + 2)
-      Circle()
-        .fill(Color.red)
-        .frame(width: 9, height: 9)
-        .opacity(0.9)
-        .position(x: xPosition + hourOffset, y: yPosition)
-
-      Text("\(currentDay)").bold()
-        .font(.system(size: 11.5))
-        .foregroundColor(Color("foreground"))
-        .frame(minHeight: 0)
-        .position(x: xPosition + blockWidth / 4 - 1.5, y: yPosition + 1)
+        .fill(color)
+      
+        .frame(width: 4, height: 8)
+        .opacity(0.7)
+        .position(x: xPosition + hourOffset, y: yPosition + blockHeight / 2)
+      ZStack(alignment: .center) {
+        
+        Circle()
+          .fill(.black)
+          .frame(width: 15, height: 15)
+          .opacity(0.5)
+          .position(x: xPosition + hourOffset, y: yPosition )
+        
+        
+        Circle()
+          .fill(color)
+          .frame(width: 12, height: 12)
+          .opacity(0.8)
+          .position(x: xPosition + hourOffset, y: yPosition)
+        
+        Text("\(emoji)")
+          .bold()
+          .font(.system(size: 16))
+        //          .foregroundColor(Color.white)
+        //          .opacity(0.5)
+          .position(x: xPosition + hourOffset, y: yPosition )
+      }
     }
   }
 }
+//var body: some View {
+//  ZStack {
+//    // The line indicator
+//    Rectangle().fill(.black)
+//      .frame(width: 6, height: 6)
+//      .opacity(0.3)
+//      .position(x: xPosition + hourOffset, y: yPosition + 8)
+//    Rectangle()
+//      .fill(color)
+//
+//      .frame(width: 4, height: 8)
+//      .opacity(0.7)
+//      .position(x: xPosition + hourOffset, y: yPosition + blockHeight / 2)
+//    ZStack(alignment: .center) {
+//
+//      Circle()
+//        .fill(.white)
+//        .frame(width: 15, height: 15)
+//        .opacity(0.2)
+//        .position(x: xPosition + hourOffset, y: yPosition + 2)
+//
+//       Second Circle (foreground)
+//              Circle()
+//                .fill(color)
+//                .frame(width: 12, height: 12)
+//                .opacity(0.5)
+//                .position(x: xPosition + hourOffset, y: yPosition)
+//
+//      Text("\(emoji)")
+//        .bold()
+//        .font(.system(size: 16))
+//      //          .foregroundColor(Color.white)
+//      //          .opacity(0.5)
+//        .position(x: xPosition + hourOffset, y: yPosition + 1)
+//    }

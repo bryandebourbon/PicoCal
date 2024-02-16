@@ -41,11 +41,11 @@ struct DayTimelineView<Events: Sequence>: View where Events.Element: EventRepres
             Spacer()
             HStack(spacing: 0) {
               Rectangle()
-                .fill(self.hasEvent(in: morningRange) ? Color.red : Color.clear)
+                .fill(self.hasEvent(in: morningRange) ? Color.gray : Color.clear)
               Rectangle()
-                .fill(self.hasEvent(in: afternoonRange) ? Color.red : Color.clear)
+                .fill(self.hasEvent(in: afternoonRange) ? Color.gray : Color.clear)
               Rectangle()
-                .fill(self.hasEvent(in: eveningRange) ? Color.red : Color.clear)
+                .fill(self.hasEvent(in: eveningRange) ? Color.gray : Color.clear)
 
             }
             .frame(

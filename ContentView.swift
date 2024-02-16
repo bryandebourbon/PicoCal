@@ -27,9 +27,6 @@ struct ContentView: View {
     )
     .frame(maxWidth: 180, maxHeight: 77)
 
-    Button("🔄") {
-     store.saveEvents(goalDays, calorieDays: healthKitVM.calorieFlags)
-    }
    }
     .onAppear {
       eventKitFetcher.initializeEventStore { granted, events, error in

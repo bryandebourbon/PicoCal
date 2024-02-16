@@ -28,7 +28,6 @@
 		2EB643DF2B79D4AC00134110 /* HealthKitFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB643DE2B79D4AC00134110 /* HealthKitFetcher.swift */; };
 		2EB643E02B79D4AC00134110 /* HealthKitFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB643DE2B79D4AC00134110 /* HealthKitFetcher.swift */; };
 		2EB643E12B79D4AC00134110 /* HealthKitFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB643DE2B79D4AC00134110 /* HealthKitFetcher.swift */; };
-		2EB643E52B79DBBA00134110 /* PicoCalWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 2ED6C2E72B4A30FF002425B9 /* PicoCalWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2EB643EA2B79DE9500134110 /* SharedUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB643E92B79DE9500134110 /* SharedUserDefaults.swift */; };
 		2EB643EB2B79DE9500134110 /* SharedUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB643E92B79DE9500134110 /* SharedUserDefaults.swift */; };
 		2EB643EC2B79DE9500134110 /* SharedUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB643E92B79DE9500134110 /* SharedUserDefaults.swift */; };
@@ -88,17 +87,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		2EB643E82B79DBBA00134110 /* Embed Foundation Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				2EB643E52B79DBBA00134110 /* PicoCalWidget.appex in Embed Foundation Extensions */,
-			);
-			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		2ED6C2DF2B4A3034002425B9 /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -298,7 +286,6 @@
 				2ED6C2BC2B4A3030002425B9 /* Frameworks */,
 				2ED6C2BD2B4A3030002425B9 /* Resources */,
 				2ED6C2DF2B4A3034002425B9 /* Embed Watch Content */,
-				2EB643E82B79DBBA00134110 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);

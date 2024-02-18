@@ -1,8 +1,6 @@
 import EventKit
 import SwiftUI
 
-
-
 struct DayTimelineView<Events: Sequence>: View where Events.Element: EventRepresentable {
   var events: Events
   var day: Date
@@ -31,7 +29,7 @@ struct DayTimelineView<Events: Sequence>: View where Events.Element: EventRepres
                     width: 1, height: geometry.size.height * 0.4) /*isBucketStart(hour: hour) ? 10 : 5)*/
               }
             }.frame(maxWidth: .infinity)
-              .offset(x:1)
+              .offset(x: 1)
 
           }
 
@@ -49,8 +47,8 @@ struct DayTimelineView<Events: Sequence>: View where Events.Element: EventRepres
 
             }
             .frame(
-              width: geometry.size.width, height: geometry.size.height  * 0.35)
-
+              width: geometry.size.width,
+              height: geometry.size.height * 0.35)
           }
         }
 
@@ -62,7 +60,7 @@ struct DayTimelineView<Events: Sequence>: View where Events.Element: EventRepres
     }
   }
 
-   func hasEvent(in hourRange: Range<Int>) -> Bool {
+  func hasEvent(in hourRange: Range<Int>) -> Bool {
     let calendar = Calendar.current
     return events.contains { event in
       let eventStartHour = calendar.component(.hour, from: event.startDate)
@@ -71,7 +69,7 @@ struct DayTimelineView<Events: Sequence>: View where Events.Element: EventRepres
     }
   }
 
-   func isBucketStart(hour: Int) -> Bool {
+  func isBucketStart(hour: Int) -> Bool {
     [12].contains(hour)
   }
 }

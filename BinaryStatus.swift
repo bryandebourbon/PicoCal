@@ -8,20 +8,17 @@ struct BinaryStatus: View {
 
   var body: some View {
     GeometryReader { geometry in
-      if isToday {
-        ZStack {
-          HStack {
-            Rectangle().fill(Color.black)
-              .opacity(0.2).frame(width: position)
-            Spacer()
-          }
-        }
+      if isToday && hasContributionToday{
+//        ZStack {
+//          HStack {
+            Rectangle()
+              .fill(Color.green)
+              .opacity(0.5)
+//              .frame(width: position)
+//            Spacer()
+//          }
+//        }
       }
-      // If there 
-
-
-
-      //is additional logic for the else case, add it here
     }
   }
 }

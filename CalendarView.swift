@@ -150,20 +150,31 @@ struct CalendarView<Events: Sequence>: View where Events.Element: EventRepresent
     }
   }
 
-//  func loadCalorieDataFromUserDefaults() {
-//    let userDefaults = UserDefaults(suiteName: "group.com.bryandebourbon.shared")
-//    if let savedCalories = userDefaults?.dictionary(forKey: "DailyCalorieData") as? [String: Double]
-//    {
-//      //      dailyCalories = savedCalories
-//    }
-//  }
+  //  func loadCalorieDataFromUserDefaults() {
+  //    let userDefaults = UserDefaults(suiteName: "group.com.bryandebourbon.shared")
+  //    if let savedCalories = userDefaults?.dictionary(forKey: "DailyCalorieData") as? [String: Double]
+  //    {
+  //      //      dailyCalories = savedCalories
+  //    }
+  //  }
 
   func updateCurrentDay() {
     let newDay = calendar.component(.day, from: Date())
     if newDay != currentDay {
       currentDay = newDay
       // Update hasContributionToday based on the new current day
+
       hasContributionToday = (currentDay - 1) < goalDays.count && goalDays[currentDay - 1]
+
+// should include logic about goal days and github commit
+
+
+
+
+
+
+
+
     }
   }
 
@@ -290,9 +301,11 @@ struct CalendarView<Events: Sequence>: View where Events.Element: EventRepresent
 
             ZStack {
               BinaryStatus(
-                isToday: isToday, position: position,
-                hasContributionToday: $hasContributionToday)
-//              LoadingBar(total: 1000, caloriesToday: 500, color: Color(.red))
+                isToday: isToday,
+                position: position,
+                hasContributionToday: $hasContributionToday
+              )
+              //              LoadingBar(total: 1000, caloriesToday: 500, color: Color(.red))
             }
 
           }
@@ -335,8 +348,6 @@ func createPreviewEvent() -> MockEvent {
     endDate: Calendar.current.date(byAdding: .hour, value: 3, to: Date()) ?? Date()
   )
 }
-
-
 
 func generateRandomBooleanArray(size: Int = 30) -> [Bool] {
   return (0..<size).map { _ in Bool.random() }
@@ -392,41 +403,40 @@ struct CurrentDayIndicator: View {
   let color: Color = Color.red
   let backgroundColor = Color.black
   let emoji: String = ""
-  
+
   var body: some View {
     ZStack {
       // The line indicator
       Rectangle().fill(.black)
         .frame(width: 6, height: 6)
         .opacity(0.3)
-        .position(x: xPosition + hourOffset, y: yPosition )
+        .position(x: xPosition + hourOffset, y: yPosition)
       Rectangle()
         .fill(color)
-      
+
         .frame(width: 4, height: 8)
         .opacity(0.7)
         .position(x: xPosition + hourOffset, y: yPosition + blockHeight / 2)
       ZStack(alignment: .center) {
-        
+
         Circle()
           .fill(.black)
           .frame(width: 15, height: 15)
           .opacity(0.5)
-          .position(x: xPosition + hourOffset, y: yPosition )
-        
-        
+          .position(x: xPosition + hourOffset, y: yPosition)
+
         Circle()
           .fill(color)
           .frame(width: 12, height: 12)
           .opacity(0.8)
           .position(x: xPosition + hourOffset, y: yPosition)
-        
+
         Text("\(emoji)")
           .bold()
           .font(.system(size: 16))
-        //          .foregroundColor(Color.white)
-        //          .opacity(0.5)
-          .position(x: xPosition + hourOffset, y: yPosition )
+          //          .foregroundColor(Color.white)
+          //          .opacity(0.5)
+          .position(x: xPosition + hourOffset, y: yPosition)
       }
     }
   }

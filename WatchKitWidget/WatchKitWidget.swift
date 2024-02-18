@@ -1,6 +1,6 @@
-import WidgetKit
-import SwiftUI
 import EventKit
+import SwiftUI
+import WidgetKit
 
 @main
 struct WidgetExtensionBundle: WidgetBundle {
@@ -12,7 +12,8 @@ struct WidgetExtensionBundle: WidgetBundle {
 
 struct Provider: TimelineProvider {
   func placeholder(in context: Context) -> SimpleEntry {
-    SimpleEntry(date: Date(), events: [], goalDays: [], hasContributionToday: false, calorieDays: [])
+    SimpleEntry(
+      date: Date(), events: [], goalDays: [], hasContributionToday: false, calorieDays: [])
   }
 
   func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> Void) {
@@ -23,20 +24,31 @@ struct Provider: TimelineProvider {
 
   func getTimeline(in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> Void) {
     fetchSharedData { entry in
-      let nextUpdateDate = Calendar.current.date(byAdding: .hour, value: 1, to: entry.date)!
-      let timeline = Timeline(entries: [entry], policy: .after(nextUpdateDate))
+      let nextUpdateDate = Calendar.current.date(byAdding: .minute, value: 10, to: entry.date)!
+      let timeline = Timeline(entries: [entry], 
+                              policy:.after(nextUpdateDate))
       completion(timeline)
     }
   }
 
-   func fetchSharedData(completion: @escaping (SimpleEntry) -> Void) {
-     let ( goalDays, calorieDays) = SharedUserDefaults.shared.retrieveEvents()
+  func fetchSharedData(completion: @escaping (SimpleEntry) -> Void) {
+    let (goalDays, calorieDays) = SharedUserDefaults.shared.retrieveEvents()
 
+    let now = Date() // Current date and time
+    let calendar = Calendar.current
+    let dayComponent = calendar.component(.day, from: now)
+    print(" W UPDATE \(goalDays[dayComponent])")
 
     // Continue with your existing data fetching logic
     EventKitFetcher.fetchEvents { ekEvents in
       let wrappedEvents = ekEvents.map(EventWrapper.init)
-      let entry = SimpleEntry(date: Date(), events: wrappedEvents, goalDays: goalDays, hasContributionToday: false, calorieDays: calorieDays)
+      let entry = SimpleEntry(
+                    date: Date(),
+                    events: wrappedEvents,
+                    goalDays: goalDays,
+                    hasContributionToday: true,
+                    calorieDays: calorieDays
+                  )
       completion(entry)
     }
   }
@@ -60,10 +72,10 @@ struct WidgetExtensionEntryView: View {
       goalDays: .constant(entry.goalDays),
       calorieDays: .constant(entry.calorieDays)
     )
-      .background(ContainerRelativeShape().fill(Color.black))
-      .containerBackground(for: .widget) {
-        Color.black
-      }
+    .background(ContainerRelativeShape().fill(Color.black))
+    .containerBackground(for: .widget) {
+      Color.black
+    }
   }
 }
 
@@ -79,17 +91,15 @@ struct WidgetExtension: Widget {
 
 // Continue with WidgetExtension_Previews, HealthData, and HealthDataPlaceholder structures as defined.
 
-
 struct HealthData: Codable {
   var steps: Int = 0
   var heartRate: Int = 0
   var calorieFlags: [Bool] = []
 }
 
-
 // Placeholder function if needed
 func HealthDataPlaceholder() -> HealthData {
-  return HealthData() // Initialize with default or placeholder values
+  return HealthData()  // Initialize with default or placeholder values
 }
 
 // Make sure to replace "YOUR_APP_GROUP_IDENTIFIER" with your actual App Group identifier.

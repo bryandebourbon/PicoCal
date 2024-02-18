@@ -6,6 +6,7 @@ class GitHubVM: ObservableObject {
   private var cancellables = Set<AnyCancellable>()
 
   init() {
+    
     loadContributions()
   }
 

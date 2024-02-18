@@ -6,6 +6,8 @@ struct BinaryStatus: View {
   let position: CGFloat
   @Binding var hasContributionToday: Bool // Use @Binding here
 
+
+  
   var body: some View {
     GeometryReader { geometry in
       if isToday && hasContributionToday{

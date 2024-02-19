@@ -34,6 +34,38 @@
             endingLineNumber = "168"
             landmarkName = "updateCurrentDay()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A9696715-9B6D-40F4-A583-F4F26FA0120E - 621a9b0280fd5b07"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PicoCalWatch.CalendarView.updateCurrentDay() -&gt; ()"
+                  moduleName = "PicoCalWatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bryandebourbon/Documents/PicoCal/CalendarView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "178"
+                  endingLineNumber = "178"
+                  offsetFromSymbolStart = "1464">
+               </Location>
+               <Location
+                  uuid = "A9696715-9B6D-40F4-A583-F4F26FA0120E - 4662abc74e4cdb37"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PicoCaliOS.CalendarView.updateCurrentDay() -&gt; ()"
+                  moduleName = "PicoCaliOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bryandebourbon/Documents/PicoCal/CalendarView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "178"
+                  endingLineNumber = "178"
+                  offsetFromSymbolStart = "1516">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

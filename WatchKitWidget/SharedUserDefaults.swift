@@ -2,7 +2,7 @@ import Foundation
 
 class SharedUserDefaults {
   static let shared = SharedUserDefaults()
-  private let userDefaults: UserDefaults?
+  let userDefaults: UserDefaults?
 
   init() {
     userDefaults = UserDefaults(suiteName: "group.com.bryandebourbon.shared")

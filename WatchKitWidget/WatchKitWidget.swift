@@ -36,8 +36,8 @@ struct Provider: TimelineProvider {
 
     let now = Date() // Current date and time
     let calendar = Calendar.current
-    let dayComponent = calendar.component(.day, from: now)
-    print(" W UPDATE \(goalDays[dayComponent])")
+//    let dayComponent = calendar.component(.day, from: now)
+//    print(" W UPDATE \(goalDays[dayComponent])")
 
     // Continue with your existing data fetching logic
     EventKitFetcher.fetchEvents { ekEvents in

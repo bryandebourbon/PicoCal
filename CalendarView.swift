@@ -130,7 +130,7 @@ struct CalendarView<Events: Sequence>: View where Events.Element: EventRepresent
         else {
           return
         }
-        print("Fetching HealthKit data for day: \(day), calories: \(calories)")
+//        print("Fetching HealthKit data for day: \(day), calories: \(calories)")
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let dateKey = dateFormatter.string(from: date)
@@ -262,7 +262,7 @@ struct CalendarView<Events: Sequence>: View where Events.Element: EventRepresent
       return eventStartDay == currentDay
     }
 
-    print("caldays: \(calorieDays)")
+//    print("caldays: \(calorieDays)")
 
     let caloriesWithPadding =
       calorieDays + [

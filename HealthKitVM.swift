@@ -12,7 +12,7 @@ class HealthKitVM: ObservableObject {
 
   func requestHealthKitAuthorization() {
     guard HKHealthStore.isHealthDataAvailable() else {
-      print("HealthKit is not available on this device.")
+//      print("HealthKit is not available on this device.")
       return
     }
 
@@ -23,7 +23,7 @@ class HealthKitVM: ObservableObject {
       if success {
         self?.fetchCaloriesBurnedForCurrentMonth()
       } else {
-        print("Authorization failed: \(String(describing: error))")
+//        print("Authorization failed: \(String(describing: error))")
       }
     }
   }
@@ -46,7 +46,7 @@ class HealthKitVM: ObservableObject {
 
     query.initialResultsHandler = { [weak self] query, results, error in
       guard let results = results else {
-        print("Failed to fetch calorie data: \(String(describing: error))")
+//        print("Failed to fetch calorie data: \(String(describing: error))")
         return
       }
 
@@ -58,7 +58,7 @@ class HealthKitVM: ObservableObject {
           let calories = sum.doubleValue(for: HKUnit.kilocalorie())
           let dayIndex = calendar.component(.day, from: statistic.startDate)
           if dayIndex > 0 && dayIndex <= dailyFlags.count {
-            dailyFlags[dayIndex - 1] = calories > 500
+            dailyFlags[dayIndex - 1] = false//calories > 500
           }
         }
       }

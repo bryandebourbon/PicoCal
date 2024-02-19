@@ -33,7 +33,7 @@ struct ContentView: View {
         if let events = events as? [EventWrapper] {
           self.eventDays = events
         } else if let error = error {
-          print("An error occurred: \(error.localizedDescription)")
+//          print("An error occurred: \(error.localizedDescription)")
         }
 
       }
@@ -45,7 +45,7 @@ struct ContentView: View {
           self.updateContributionStatus()
 
         case .failure(let error):
-          print("Error fetching GitHub data: \(error)")
+//          print("Error fetching GitHub data: \(error)")
           self.goalDays = Array(repeating: false, count: 30)
           self.hasContributionToday = false
         }
@@ -55,7 +55,7 @@ struct ContentView: View {
   }
 
   func updateContributionStatus() {
-    print("goalDays", goalDays)
+//    print("goalDays", goalDays)
     hasContributionToday = goalDays.last ?? false
   }
   //  func loadCalorieDataFromUserDefaults() {

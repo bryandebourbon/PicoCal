@@ -6,7 +6,6 @@ class GitHubVM: ObservableObject {
   private var cancellables = Set<AnyCancellable>()
 
   init() {
-    
     loadContributions()
   }
 
@@ -16,35 +15,62 @@ class GitHubVM: ObservableObject {
   }
 
   private func loadContributionsFromUserDefaults() {
-    let sharedDefaults = UserDefaults(suiteName: "group.com.bryandebourbon.shared")
-    if let encodedData = sharedDefaults?.data(forKey: "githubContributions"),
-       let contributionDays = try? JSONDecoder().decode([ContributionDay].self, from: encodedData) {
+    // Utilize SharedUserDefaults instead of direct UserDefaults access
+    if let contributionDays = SharedUserDefaults.shared.retrieveContributions() {
       DispatchQueue.main.async {
-        self.contributions = contributionDays.map{contributionDay in
-          contributionDay.contributionCount > 0}
-
-        }
+        self.contributions = contributionDays
       }
     }
   }
 
   private func storeContributionsInUserDefaults(_ contributionDays: [Bool]) {
-    if let encodedData = try? JSONEncoder().encode(contributionDays) {
-      UserDefaults(suiteName: "group.com.bryandebourbon.shared")?.set(encodedData, forKey: "githubContributions")
-    }
+    // Utilize SharedUserDefaults for storing the contributions
+    SharedUserDefaults.shared.saveContributions(contributionDays)
   }
 
   private func fetchContributionsFromGitHub() {
-    // Assume GitHubDataFetcher is your class that fetches data from GitHub
-    // Implement fetching logic here, and update contributions accordingly
-
+    // Implementation remains the same, adjust as necessary for your fetching logic
     let ghdf = GitHubDataFetcher()
-    ghdf.fetchContributionBooleans(accessToken: secrets["GitHub"]!){ result in
-      print("GHDF: \(result)")
+    ghdf.fetchContributionBooleans(accessToken: secrets["GitHub"] ?? "") { [weak self] result in
+      // Assuming result is the [Bool] array representing contributions
+      DispatchQueue.main.async {
+        switch result {
+          case .success(let success):
+            self?.contributions = success
+            self?.storeContributionsInUserDefaults(success)
+          case .failure(let failure):
+            self?.contributions =  []
+            print(failure)
+        }
+      }
     }
-
-
   }
 
-  // Add any additional methods needed for your app's functionality
+  // You would need to adjust your SharedUserDefaults class to include:
+  // - saveContributions(_ contributionDays: [Bool])
+  // - retrieveContributions() -> [Bool]?
+}
+
+
+extension SharedUserDefaults {
+
+  func saveContributions(_ contributionDays: [Bool]) {
+    if let encodedData = try? JSONEncoder().encode(contributionDays) {
+      userDefaults?.set(encodedData, forKey: "githubContributions")
+    }
+  }
+
+  func retrieveContributions() -> [Bool]? {
+    if let encodedData = userDefaults?.data(forKey: "githubContributions"),
+       let contributionDays = try? JSONDecoder().decode([Bool].self, from: encodedData) {
+      return contributionDays
+    }
+    return nil
+  }
+}
+
+
+
+
+
 

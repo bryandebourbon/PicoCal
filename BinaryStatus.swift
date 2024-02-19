@@ -9,13 +9,16 @@ struct BinaryStatus: View {
 
   
   var body: some View {
+
+
     GeometryReader { geometry in
-      if isToday && hasContributionToday{
+
+      if (isToday && hasContributionToday){
 //        ZStack {
 //          HStack {
             Rectangle()
               .fill(Color.green)
-              .opacity(0.5)
+              .opacity(0.9)
 //              .frame(width: position)
 //            Spacer()
 //          }

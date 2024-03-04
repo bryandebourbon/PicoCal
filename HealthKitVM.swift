@@ -12,18 +12,17 @@ class HealthKitVM: ObservableObject {
 
   func requestHealthKitAuthorization() {
     guard HKHealthStore.isHealthDataAvailable() else {
-//      print("HealthKit is not available on this device.")
+      print("HealthKit is not available on this device.")
       return
     }
 
     let typesToRead: Set = [HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!]
 
-    healthStore.requestAuthorization(toShare: nil, read: typesToRead) {
-      [weak self] success, error in
+    healthStore.requestAuthorization(toShare: nil, read: typesToRead) { [weak self] success, error in
       if success {
         self?.fetchCaloriesBurnedForCurrentMonth()
       } else {
-//        print("Authorization failed: \(String(describing: error))")
+        print("Authorization failed: \(String(describing: error))")
       }
     }
   }
@@ -36,40 +35,39 @@ class HealthKitVM: ObservableObject {
     let calendar = Calendar.current
     let now = Date()
     let startOfMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: now))!
-    let endOfMonth = calendar.date(byAdding: .month, value: 1, to: startOfMonth)!
+    let endOfToday = calendar.startOfDay(for: calendar.date(byAdding: .day, value: 1, to: now)!)
 
-    let predicate = HKQuery.predicateForSamples(
-      withStart: startOfMonth, end: endOfMonth, options: .strictStartDate)
+    let predicate = HKQuery.predicateForSamples(withStart: startOfMonth, end: endOfToday, options: .strictStartDate)
     let query = HKStatisticsCollectionQuery(
-      quantityType: calorieType, quantitySamplePredicate: predicate, options: .cumulativeSum,
-      anchorDate: startOfMonth, intervalComponents: DateComponents(day: 1))
+      quantityType: calorieType,
+      quantitySamplePredicate: predicate,
+      options: .cumulativeSum,
+      anchorDate: startOfMonth,
+      intervalComponents: DateComponents(day: 1))
 
     query.initialResultsHandler = { [weak self] query, results, error in
       guard let results = results else {
-//        print("Failed to fetch calorie data: \(String(describing: error))")
+        print("Failed to fetch calorie data: \(String(describing: error))")
         return
       }
 
-      let daysInMonth = calendar.range(of: .day, in: .month, for: startOfMonth)!.count
-      var dailyFlags = [Bool](repeating: false, count: daysInMonth)
+      let totalDays = calendar.dateComponents([.day], from: startOfMonth, to: endOfToday).day!
+      var dailyFlags = [Bool](repeating: false, count: totalDays)
 
-      results.enumerateStatistics(from: startOfMonth, to: endOfMonth) { statistic, stop in
+      results.enumerateStatistics(from: startOfMonth, to: endOfToday) { statistic, stop in
         if let sum = statistic.sumQuantity() {
           let calories = sum.doubleValue(for: HKUnit.kilocalorie())
-          let dayIndex = calendar.component(.day, from: statistic.startDate)
-          if dayIndex > 0 && dayIndex <= dailyFlags.count {
-            dailyFlags[dayIndex - 1] = false//calories > 500
+          if let daysAgo = calendar.dateComponents([.day], from: startOfMonth, to: statistic.startDate).day {
+            dailyFlags[daysAgo] = calories > 1000
           }
         }
       }
 
       DispatchQueue.main.async {
-        // Prepending [false] may no longer be necessary if the array is correctly initialized
         self?.calorieFlags = dailyFlags
       }
     }
 
     healthStore.execute(query)
-
   }
 }

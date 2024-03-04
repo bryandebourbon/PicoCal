@@ -18,7 +18,6 @@ class SharedUserDefaults {
       userDefaults?.set(calorieDays, forKey: "calorieDays")
   }
 
-  // Retrieve eventDays, goalDays, and calorieDays
   func retrieveEvents() -> ( [Bool], [Bool]) {
 
       let goalDays = userDefaults?.array(forKey: "goalDays") as? [Bool] ?? []

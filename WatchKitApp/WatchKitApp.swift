@@ -5,11 +5,9 @@ import WidgetKit
 struct WatchKitApp: App {
   var body: some Scene {
     WindowGroup {
-      ContentView()
-      Spacer()
-      Button("Update Widget") {
+      VStack{
+        ContentView()
 
-        WidgetCenter.shared.reloadAllTimelines()
       }
     }
   }

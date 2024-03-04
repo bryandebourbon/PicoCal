@@ -131,3 +131,52 @@ extension EventKitFetcher {
   }
 }
 
+
+struct CalendarDay {
+  let date: String
+  let eventCount: Int
+}
+
+struct AccosicatedDayInfoByDateNumber {
+  let dateNumber: String
+  let dayInfo: Any
+}
+
+struct CalendarMonth {
+  var currentDate = Date()
+  let calendar = Calendar.current
+  var monthName: String  {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "MMMM"
+    return dateFormatter.string(from: currentDate)
+  }
+
+  var daysInMonth: Int {
+    let range =
+    calendar.range(of: .day,in: .month,for: currentDate)!
+    return range.count
+  }
+
+  var startingDayOfMonth: Int {
+    let components =
+    calendar.dateComponents([.year, .month], from: currentDate)
+    let firstDayOfMonth =
+    calendar.date(from: components)!
+    return calendar.component(.weekday, from: firstDayOfMonth) - 1
+  }
+}
+
+extension Calendar {
+  func settingHour(_ hour: Int) -> Calendar {
+    var newCalendar = self
+    // Set the desired date and hour here
+    newCalendar.firstWeekday = hour  // This is just an example. You should set the actual date and time as needed.
+    return newCalendar
+  }
+
+  func startOfMonth(for date: Date) -> Date {
+    let components = dateComponents([.year, .month], from: date)
+    return self.date(from: components)!
+  }
+}
+

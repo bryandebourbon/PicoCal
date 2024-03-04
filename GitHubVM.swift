@@ -30,20 +30,20 @@ class GitHubVM: ObservableObject {
 
   private func fetchContributionsFromGitHub() {
     // Implementation remains the same, adjust as necessary for your fetching logic
-    let ghdf = GitHubDataFetcher()
-    ghdf.fetchContributionBooleans(accessToken: secrets["GitHub"] ?? "") { [weak self] result in
-      // Assuming result is the [Bool] array representing contributions
-      DispatchQueue.main.async {
-        switch result {
-          case .success(let success):
-            self?.contributions = success
-            self?.storeContributionsInUserDefaults(success)
-          case .failure(let failure):
-            self?.contributions =  []
-            print(failure)
-        }
-      }
-    }
+//    let ghdf = GitHubDataFetcher()
+//    ghdf.fetchContributionBooleans(accessToken: secrets["GitHub"] ?? "") { [weak self] result in
+//      // Assuming result is the [Bool] array representing contributions
+//      DispatchQueue.main.async {
+//        switch result {
+//          case .success(let success):
+//            self?.contributions = success
+//            self?.storeContributionsInUserDefaults(success)
+//          case .failure(let failure):
+//            self?.contributions =  []
+//            print(failure)
+//        }
+//      }
+//    }
   }
 
   // You would need to adjust your SharedUserDefaults class to include:

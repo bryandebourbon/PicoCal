@@ -1,10 +1,10 @@
 import SwiftUI
 
-struct CurrentDateView: View {
+struct CalendarDateTitle: View {
   // Date formatter
    var dateFormatter: DateFormatter {
     let formatter = DateFormatter()
-    formatter.dateFormat = "EEEE MMM dd yyyy"
+    formatter.dateFormat = "EEEE MMMM dd yyyy"
     return formatter
   }
 
@@ -16,24 +16,15 @@ struct CurrentDateView: View {
   var body: some View {
     Text(currentDate)
       .bold()
-      .font(.system(size: 16))
-      .foregroundColor(Color("title")) // Make sure "foreground" color is defined in your asset catalog
+      .font(.system(size: 12))
+      .foregroundColor(Color("title"))
       .frame(minHeight: 0)
   }
 }
 
-struct CurrentDateView_Previews: PreviewProvider {
+struct CalendarDateTitle_Previews: PreviewProvider {
   static var previews: some View {
-    CurrentDateView()
+    CalendarDateTitle()
   }
 }
 
-
-//january
-//february
-//march
-//august
-//september
-//october
-//november
-//december

@@ -35,7 +35,7 @@ struct Provider: TimelineProvider {
   }
 
   func fetchSharedData(completion: @escaping (SimpleEntry) -> Void) {
-    let (goalDays, calorieDays) = SharedUserDefaults.shared.retrieveEvents()
+    let (_, calorieDays) = SharedUserDefaults.shared.retrieveEvents()
 
     let entry = SimpleEntry(date: Date(), calorieDays: calorieDays)
     completion(entry)

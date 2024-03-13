@@ -4,7 +4,7 @@ struct CalendarDateTitle: View {
   // Date formatter
    var dateFormatter: DateFormatter {
     let formatter = DateFormatter()
-    formatter.dateFormat = "EEEE MMMM dd yyyy"
+    formatter.dateFormat = "EEEE MMM dd yyyy"
     return formatter
   }
 

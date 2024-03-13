@@ -36,7 +36,7 @@ struct CalendarView: View {
       let isToday = calendar.isDateInToday(currentDate)
       let isPast = isDateInPast(currentDate)
 
-      print("calorieDays \(calorieDays)")
+//      print("calorieDays \(calorieDays)")
       let isComplete = day < calorieDays.count ? calorieDays[day] : false
 
       return AnyView(
@@ -45,6 +45,10 @@ struct CalendarView: View {
           isToday: isToday,
           isPast: isPast,
           isComplete: isComplete
+
+//          isBusyMorning:,
+//          isBusyAfternoon:,
+//          isBusyEvening:
         )
       )
     }

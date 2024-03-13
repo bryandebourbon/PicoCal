@@ -147,7 +147,7 @@ struct CalendarMonth {
   let calendar = Calendar.current
   var monthName: String  {
     let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "MMMM"
+    dateFormatter.dateFormat = "MMM"
     return dateFormatter.string(from: currentDate)
   }
 

@@ -1,12 +1,15 @@
 import SwiftUI
 
 struct DefaultDayBlock: View {
-
   let dayOfMonth: Int
   let isToday: Bool
   let isPast: Bool
   let isComplete: Bool
-  @Environment(\.calendar) var calendar
+
+  let isBusyMorning: Bool = false
+  let isBusyAfternoon: Bool = false
+  let isBusyEvening: Bool = false
+
 
   var body: some View {
     ZStack {
@@ -15,26 +18,21 @@ struct DefaultDayBlock: View {
       VStack {
         Spacer()
         HStack(spacing: 0) {
-          Rectangle().fill(.red)
-          Rectangle().fill(.red)
-          Rectangle().fill(.clear)
+          Rectangle().fill(isBusyMorning ? .red : .clear)
+          Rectangle().fill(isBusyAfternoon ? .red : .clear)
+          Rectangle().fill(isBusyEvening ? .red : .clear)
         }.frame(height: 3)
       }
 
       Text("\(dayOfMonth)")
         .bold()
-        .font(.system(size: 10))
+        .font(.system(size: 9))
         .foregroundColor(Color("foreground"))
+        .padding(1)
         .background(
           isToday ? AnyView(Color.gray.clipShape(Circle())) : AnyView(Color.clear))
-
-    }.overlay(isComplete ? Color("accent").opacity(0.8) : Color.clear)
-      .overlay(isPast ? Color(.black).opacity(0.6) : Color.clear)
-    //    .onAppear {
-    //      print("Day of Month: \(dayOfMonth)")
-    //      print("isToday: \(isToday)")
-    //      print("isPast: \(isPast)")
-    //      print("isComplete: \(isComplete)")
-    //    }
+    }
+    .overlay(isPast ? Color(.black).opacity(0.5) : Color.clear)
+    .overlay(isComplete ? Color("accent").opacity(0.6) : Color.clear)
   }
 }

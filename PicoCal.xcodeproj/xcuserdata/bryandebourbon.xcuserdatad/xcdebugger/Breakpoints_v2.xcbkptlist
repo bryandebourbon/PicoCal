@@ -30,8 +30,8 @@
             filePath = "DefaultDayBlock.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
@@ -71,22 +71,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E1F0C607-457E-4A08-B879-C00A8AA37B34"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DefaultDayBlock.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "body"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "A9EED85E-B522-4C76-92F8-6BAB59A61FEA"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -98,6 +82,246 @@
             endingLineNumber = "15"
             landmarkName = "body"
             landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DC9EDCA5-CE4E-40D6-A714-4F0A853543D6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DefaultDayBlock.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8AEEEE8C-9E92-4918-97E7-C738FF8687CC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DefaultDayBlock.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5E45A7E2-7B5E-4DBF-9950-B6023140AE67"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DefaultDayBlock.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7669EC6D-12F0-4721-8E4F-02F34D79F198"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HealthKitVM.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "fetchCaloriesBurnedForCurrentMonth()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7669EC6D-12F0-4721-8E4F-02F34D79F198 - 5a954f0fde7076c4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.HKStatistics, Swift.UnsafeMutablePointer&lt;ObjectiveC.ObjCBool&gt;) -&gt; () in closure #1 (__C.HKStatisticsCollectionQuery, Swift.Optional&lt;__C.HKStatisticsCollection&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in PicoCalWatch.HealthKitVM.fetchCaloriesBurnedForCurrentMonth() -&gt; ()"
+                  moduleName = "PicoCalWatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bryandebourbon/Documents/PicoCal/HealthKitVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "61"
+                  endingLineNumber = "61"
+                  offsetFromSymbolStart = "880">
+               </Location>
+               <Location
+                  uuid = "7669EC6D-12F0-4721-8E4F-02F34D79F198 - 45dfbff1a9281ff6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.HKStatistics, Swift.UnsafeMutablePointer&lt;ObjectiveC.ObjCBool&gt;) -&gt; () in closure #1 (__C.HKStatisticsCollectionQuery, Swift.Optional&lt;__C.HKStatisticsCollection&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in PicoCaliOS.HealthKitVM.fetchCaloriesBurnedForCurrentMonth() -&gt; ()"
+                  moduleName = "PicoCaliOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bryandebourbon/Documents/PicoCal/HealthKitVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "61"
+                  endingLineNumber = "61"
+                  offsetFromSymbolStart = "988">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A391735C-C511-4C36-BE2F-52FD1AD8AB79"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CalendarView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "fullMonthContent()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A391735C-C511-4C36-BE2F-52FD1AD8AB79 - dd2a5bc9ce9634d4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PicoCalWatch.CalendarView.fullMonthContent() -&gt; Swift.Array&lt;SwiftUI.AnyView&gt;"
+                  moduleName = "PicoCalWatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bryandebourbon/Documents/PicoCal/CalendarView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "3060">
+               </Location>
+               <Location
+                  uuid = "A391735C-C511-4C36-BE2F-52FD1AD8AB79 - afbc3251c61198d4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PicoCaliOS.CalendarView.fullMonthContent() -&gt; Swift.Array&lt;SwiftUI.AnyView&gt;"
+                  moduleName = "PicoCaliOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bryandebourbon/Documents/PicoCal/CalendarView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "2588">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D8BFD59F-8FFE-4A11-8183-9C586D46A330"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CalendarView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "fullMonthContent()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D8BFD59F-8FFE-4A11-8183-9C586D46A330 - afbc3251c61198d4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PicoCaliOS.CalendarView.fullMonthContent() -&gt; Swift.Array&lt;SwiftUI.AnyView&gt;"
+                  moduleName = "PicoCaliOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bryandebourbon/Documents/PicoCal/CalendarView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "2588">
+               </Location>
+               <Location
+                  uuid = "D8BFD59F-8FFE-4A11-8183-9C586D46A330 - dd2a5bc9ce9634d4"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PicoCalWatch.CalendarView.fullMonthContent() -&gt; Swift.Array&lt;SwiftUI.AnyView&gt;"
+                  moduleName = "PicoCalWatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bryandebourbon/Documents/PicoCal/CalendarView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "3060">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "73A4A180-BC2F-4020-9315-E55957B65EE6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CalendarView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "fullMonthContent()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "73A4A180-BC2F-4020-9315-E55957B65EE6 - dd2a5bc9ce9634d4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PicoCalWatch.CalendarView.fullMonthContent() -&gt; Swift.Array&lt;SwiftUI.AnyView&gt;"
+                  moduleName = "PicoCalWatch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bryandebourbon/Documents/PicoCal/CalendarView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "3060">
+               </Location>
+               <Location
+                  uuid = "73A4A180-BC2F-4020-9315-E55957B65EE6 - afbc3251c61198d4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PicoCaliOS.CalendarView.fullMonthContent() -&gt; Swift.Array&lt;SwiftUI.AnyView&gt;"
+                  moduleName = "PicoCaliOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bryandebourbon/Documents/PicoCal/CalendarView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "2588">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -58,7 +58,7 @@ class HealthKitVM: ObservableObject {
         if let sum = statistic.sumQuantity() {
           let calories = sum.doubleValue(for: HKUnit.kilocalorie())
           if let daysAgo = calendar.dateComponents([.day], from: startOfMonth, to: statistic.startDate).day {
-            dailyFlags[daysAgo] = calories > 1000
+            dailyFlags[daysAgo] = calories > 500
           }
         }
       }

@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2E245BAA2BB8EA3300797BDE /* @Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E66F5952B462A1A007AFEE7 /* @Event.swift */; };
+		2E245BAA2BB8EA3300797BDE /* EventKitInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E66F5952B462A1A007AFEE7 /* EventKitInfo.swift */; };
 		2E245BAD2BBA45BB00797BDE /* WatchConnectivityProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E245BAC2BBA45BB00797BDE /* WatchConnectivityProvider.swift */; };
-		2E2D44922BB8E59C00CE74C7 /* @Watch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2D44912BB8E59C00CE74C7 /* @Watch.swift */; };
-		2E2D44952BB8E91C00CE74C7 /* @Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB643E92B79DE9500134110 /* @Store.swift */; };
+		2E2D44922BB8E59C00CE74C7 /* WatchSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2D44912BB8E59C00CE74C7 /* WatchSession.swift */; };
+		2E2D44952BB8E91C00CE74C7 /* WigetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB643E92B79DE9500134110 /* WigetStore.swift */; };
 		2E7238882B4B7D51002CD589 /* Assests.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E7238872B4B7D51002CD589 /* Assests.xcassets */; };
 		2E7238892B4B7D51002CD589 /* Assests.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E7238872B4B7D51002CD589 /* Assests.xcassets */; };
 		2E72388A2B4B7D51002CD589 /* Assests.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E7238872B4B7D51002CD589 /* Assests.xcassets */; };
-		2EB643EA2B79DE9500134110 /* @Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB643E92B79DE9500134110 /* @Store.swift */; };
-		2EB643EB2B79DE9500134110 /* @Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB643E92B79DE9500134110 /* @Store.swift */; };
+		2EB643EA2B79DE9500134110 /* WigetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB643E92B79DE9500134110 /* WigetStore.swift */; };
+		2EB643EB2B79DE9500134110 /* WigetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB643E92B79DE9500134110 /* WigetStore.swift */; };
 		2ECD84772B8994F8001D811C /* DefaultDayBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD84762B8994F8001D811C /* DefaultDayBlock.swift */; };
 		2ECD84782B8994F8001D811C /* DefaultDayBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD84762B8994F8001D811C /* DefaultDayBlock.swift */; };
 		2ECD84792B8994F8001D811C /* DefaultDayBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD84762B8994F8001D811C /* DefaultDayBlock.swift */; };
@@ -38,12 +38,12 @@
 		2ED6C2F92B4A34E1002425B9 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E66F5912B4627EA007AFEE7 /* CalendarView.swift */; };
 		2ED6C2FA2B4A34E1002425B9 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E66F5912B4627EA007AFEE7 /* CalendarView.swift */; };
 		2ED6C2FB2B4A34E2002425B9 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E66F5912B4627EA007AFEE7 /* CalendarView.swift */; };
-		2ED6C3092B4A3500002425B9 /* @Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E66F5952B462A1A007AFEE7 /* @Event.swift */; };
-		2ED6C30A2B4A3501002425B9 /* @Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E66F5952B462A1A007AFEE7 /* @Event.swift */; };
+		2ED6C3092B4A3500002425B9 /* EventKitInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E66F5952B462A1A007AFEE7 /* EventKitInfo.swift */; };
+		2ED6C30A2B4A3501002425B9 /* EventKitInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E66F5952B462A1A007AFEE7 /* EventKitInfo.swift */; };
 		2ED6C30E2B4A35C5002425B9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED6C30C2B4A3552002425B9 /* ContentView.swift */; };
-		2EFA15DE2B7A8D7E00F34B25 /* @Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFA15DD2B7A8D7E00F34B25 /* @Health.swift */; };
-		2EFA15DF2B7A8D7E00F34B25 /* @Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFA15DD2B7A8D7E00F34B25 /* @Health.swift */; };
-		2EFA15E02B7A8D7E00F34B25 /* @Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFA15DD2B7A8D7E00F34B25 /* @Health.swift */; };
+		2EFA15DE2B7A8D7E00F34B25 /* HealthKitInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFA15DD2B7A8D7E00F34B25 /* HealthKitInfo.swift */; };
+		2EFA15DF2B7A8D7E00F34B25 /* HealthKitInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFA15DD2B7A8D7E00F34B25 /* HealthKitInfo.swift */; };
+		2EFA15E02B7A8D7E00F34B25 /* HealthKitInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFA15DD2B7A8D7E00F34B25 /* HealthKitInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,19 +90,19 @@
 
 /* Begin PBXFileReference section */
 		2E245BAC2BBA45BB00797BDE /* WatchConnectivityProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityProvider.swift; sourceTree = "<group>"; };
-		2E2D44912BB8E59C00CE74C7 /* @Watch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "@Watch.swift"; sourceTree = "<group>"; };
+		2E2D44912BB8E59C00CE74C7 /* WatchSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSession.swift; sourceTree = "<group>"; };
 		2E5238742B479A04008988E0 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; path = README; sourceTree = SOURCE_ROOT; };
 		2E5238812B49BC63008988E0 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = /System/Library/Frameworks/WidgetKit.framework; sourceTree = "<absolute>"; };
 		2E5238832B49BC64008988E0 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = /System/Library/Frameworks/SwiftUI.framework; sourceTree = "<absolute>"; };
 		2E66F5912B4627EA007AFEE7 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
-		2E66F5952B462A1A007AFEE7 /* @Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "@Event.swift"; sourceTree = "<group>"; };
+		2E66F5952B462A1A007AFEE7 /* EventKitInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventKitInfo.swift; sourceTree = "<group>"; };
 		2E66F5972B4640D3007AFEE7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		2E6754482B7AF9EF00C6619C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E7238872B4B7D51002CD589 /* Assests.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assests.xcassets; sourceTree = "<group>"; };
 		2EB643E22B79D89900134110 /* PicoCaliOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PicoCaliOS.entitlements; sourceTree = "<group>"; };
 		2EB643E32B79D8A600134110 /* PicoCalWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PicoCalWatch.entitlements; sourceTree = "<group>"; };
 		2EB643E42B79D8AE00134110 /* PicoCalWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PicoCalWidget.entitlements; sourceTree = "<group>"; };
-		2EB643E92B79DE9500134110 /* @Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "@Store.swift"; path = "WatchKitWidget/@Store.swift"; sourceTree = "<group>"; };
+		2EB643E92B79DE9500134110 /* WigetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WigetStore.swift; path = WatchKitWidget/WigetStore.swift; sourceTree = "<group>"; };
 		2ECD84762B8994F8001D811C /* DefaultDayBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDayBlock.swift; sourceTree = "<group>"; };
 		2ECD847A2B8A3309001D811C /* WrapGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrapGridView.swift; sourceTree = "<group>"; };
 		2ECD847E2B8D68BF001D811C /* CalendarDateTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDateTitle.swift; sourceTree = "<group>"; };
@@ -116,7 +116,7 @@
 		2ED6C2EB2B4A3100002425B9 /* WatchKitWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchKitWidget.swift; sourceTree = "<group>"; };
 		2ED6C2EF2B4A3102002425B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2ED6C30C2B4A3552002425B9 /* ContentView.swift */ = {isa = PBXFileReference; indentWidth = 1; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; tabWidth = 1; };
-		2EFA15DD2B7A8D7E00F34B25 /* @Health.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "@Health.swift"; sourceTree = "<group>"; };
+		2EFA15DD2B7A8D7E00F34B25 /* HealthKitInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,10 +155,10 @@
 				2E66F5972B4640D3007AFEE7 /* README.md */,
 				2E7238872B4B7D51002CD589 /* Assests.xcassets */,
 				2ECD847A2B8A3309001D811C /* WrapGridView.swift */,
-				2E66F5952B462A1A007AFEE7 /* @Event.swift */,
-				2E2D44912BB8E59C00CE74C7 /* @Watch.swift */,
-				2EB643E92B79DE9500134110 /* @Store.swift */,
-				2EFA15DD2B7A8D7E00F34B25 /* @Health.swift */,
+				2E66F5952B462A1A007AFEE7 /* EventKitInfo.swift */,
+				2E2D44912BB8E59C00CE74C7 /* WatchSession.swift */,
+				2EB643E92B79DE9500134110 /* WigetStore.swift */,
+				2EFA15DD2B7A8D7E00F34B25 /* HealthKitInfo.swift */,
 				2ECD847E2B8D68BF001D811C /* CalendarDateTitle.swift */,
 				2E66F5912B4627EA007AFEE7 /* CalendarView.swift */,
 				2ECD84762B8994F8001D811C /* DefaultDayBlock.swift */,
@@ -354,11 +354,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2EB643EA2B79DE9500134110 /* @Store.swift in Sources */,
+				2EB643EA2B79DE9500134110 /* WigetStore.swift in Sources */,
 				2ED6C30E2B4A35C5002425B9 /* ContentView.swift in Sources */,
-				2E2D44922BB8E59C00CE74C7 /* @Watch.swift in Sources */,
-				2EFA15DE2B7A8D7E00F34B25 /* @Health.swift in Sources */,
-				2ED6C3092B4A3500002425B9 /* @Event.swift in Sources */,
+				2E2D44922BB8E59C00CE74C7 /* WatchSession.swift in Sources */,
+				2EFA15DE2B7A8D7E00F34B25 /* HealthKitInfo.swift in Sources */,
+				2ED6C3092B4A3500002425B9 /* EventKitInfo.swift in Sources */,
 				2ED6C2F92B4A34E1002425B9 /* CalendarView.swift in Sources */,
 				2ECD847F2B8D68BF001D811C /* CalendarDateTitle.swift in Sources */,
 				2ED6C2C22B4A3030002425B9 /* iOSApp.swift in Sources */,
@@ -371,10 +371,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2EB643EB2B79DE9500134110 /* @Store.swift in Sources */,
-				2EFA15DF2B7A8D7E00F34B25 /* @Health.swift in Sources */,
+				2EB643EB2B79DE9500134110 /* WigetStore.swift in Sources */,
+				2EFA15DF2B7A8D7E00F34B25 /* HealthKitInfo.swift in Sources */,
 				2ECD84802B8D68BF001D811C /* CalendarDateTitle.swift in Sources */,
-				2ED6C30A2B4A3501002425B9 /* @Event.swift in Sources */,
+				2ED6C30A2B4A3501002425B9 /* EventKitInfo.swift in Sources */,
 				2E245BAD2BBA45BB00797BDE /* WatchConnectivityProvider.swift in Sources */,
 				2ED6C2FA2B4A34E1002425B9 /* CalendarView.swift in Sources */,
 				2ED6C2D42B4A3033002425B9 /* WatchKitApp.swift in Sources */,
@@ -387,10 +387,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E245BAA2BB8EA3300797BDE /* @Event.swift in Sources */,
-				2EFA15E02B7A8D7E00F34B25 /* @Health.swift in Sources */,
+				2E245BAA2BB8EA3300797BDE /* EventKitInfo.swift in Sources */,
+				2EFA15E02B7A8D7E00F34B25 /* HealthKitInfo.swift in Sources */,
 				2ECD84812B8D68BF001D811C /* CalendarDateTitle.swift in Sources */,
-				2E2D44952BB8E91C00CE74C7 /* @Store.swift in Sources */,
+				2E2D44952BB8E91C00CE74C7 /* WigetStore.swift in Sources */,
 				2ED6C2FB2B4A34E2002425B9 /* CalendarView.swift in Sources */,
 				2ED6C2EC2B4A3100002425B9 /* WatchKitWidget.swift in Sources */,
 				2ECD84792B8994F8001D811C /* DefaultDayBlock.swift in Sources */,
@@ -538,7 +538,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = PicoCalWatch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = VZPMV36P9L;
 				ENABLE_PREVIEWS = YES;
@@ -553,7 +553,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 12.0;
+				MARKETING_VERSION = 13.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bryandebourbon.Calendar.iOSApp.WatchKitApp;
 				PRODUCT_NAME = PicoCalWatch;
 				SDKROOT = watchos;
@@ -573,7 +573,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = PicoCalWatch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = VZPMV36P9L;
 				ENABLE_PREVIEWS = YES;
@@ -588,7 +588,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 12.0;
+				MARKETING_VERSION = 13.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bryandebourbon.Calendar.iOSApp.WatchKitApp;
 				PRODUCT_NAME = PicoCalWatch;
 				SDKROOT = watchos;
@@ -609,7 +609,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = PicoCaliOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = VZPMV36P9L;
 				ENABLE_PREVIEWS = YES;
@@ -628,7 +628,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 12.0;
+				MARKETING_VERSION = 13.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bryandebourbon.Calendar.iOSApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -650,7 +650,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = PicoCaliOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = VZPMV36P9L;
 				ENABLE_PREVIEWS = YES;
@@ -669,7 +669,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 12.0;
+				MARKETING_VERSION = 13.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bryandebourbon.Calendar.iOSApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;

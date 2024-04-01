@@ -45,10 +45,6 @@ struct CalendarView: View {
           isToday: isToday,
           isPast: isPast,
           isComplete: isComplete
-
-//          isBusyMorning:,
-//          isBusyAfternoon:,
-//          isBusyEvening:
         )
       )
     }

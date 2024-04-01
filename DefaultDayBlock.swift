@@ -10,29 +10,22 @@ struct DefaultDayBlock: View {
   let isBusyAfternoon: Bool = false
   let isBusyEvening: Bool = false
 
-
   var body: some View {
     ZStack {
       Color.gray.opacity(0.4)
 
-      VStack {
-        Spacer()
-        HStack(spacing: 0) {
-          Rectangle().fill(isBusyMorning ? .red : .clear)
-          Rectangle().fill(isBusyAfternoon ? .red : .clear)
-          Rectangle().fill(isBusyEvening ? .red : .clear)
-        }.frame(height: 3)
-      }
-
       Text("\(dayOfMonth)")
         .bold()
-        .font(.system(size: 9))
-        .foregroundColor(Color("foreground"))
-        .padding(1)
-        .background(
-          isToday ? AnyView(Color.gray.clipShape(Circle())) : AnyView(Color.clear))
+        .font(.system(size: 11))
+        .foregroundColor(.white)
+//        .padding(1)
+        .shadow(color: .black.opacity(0.4), radius: 2)
+
     }
     .overlay(isPast ? Color(.black).opacity(0.5) : Color.clear)
-    .overlay(isComplete ? Color("accent").opacity(0.6) : Color.clear)
+    .background(
+      isToday ? AnyView(Color.red.clipShape(Ellipse()).padding(3)) : AnyView(Color.clear)
+    )
+    .background(isComplete ? Color("accent").opacity(0.6) : Color.clear)
   }
 }

@@ -9,7 +9,7 @@ struct WatchKitApp: App {
     WindowGroup {
       VStack {
         ContentView()
-      }
+      }.edgesIgnoringSafeArea(.all)
     }
   }
 }

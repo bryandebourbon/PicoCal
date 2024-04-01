@@ -38,9 +38,8 @@ struct MockEvent: EventRepresentable, Identifiable {
 
 class EventKitFetcher {
   static let store = EKEventStore()
-  static var eventDays = [any EventRepresentable]() // Updated to use EventRepresentable
-
-  // Initialize event store and fetch events
+  static var eventDays = [any EventRepresentable]()
+  
   func initializeEventStore(completion: @escaping (Bool, [any EventRepresentable]?, Error?) -> Void) {
     EventKitFetcher.requestCalendarAccess { granted, error in
       if granted {

@@ -1,3 +1,5 @@
+import EventKit
+import HealthKit
 import SwiftUI
 import WidgetKit
 
@@ -5,9 +7,31 @@ import WidgetKit
 struct WatchKitApp: App {
   var body: some Scene {
     WindowGroup {
-      VStack{
+      VStack {
         ContentView()
+      }
+    }
+  }
+}
 
+struct ContentView: View {
+  //  @StateObject var store = Store()
+  var health = Health()
+  @StateObject private var connectivityProvider = WatchConnectivityProvider()
+
+  func refresh() async {
+    Store.shared.persist(data: connectivityProvider.local, forKey: "sharedFlags")
+    WidgetCenter.shared.reloadAllTimelines()
+  }
+
+
+  var body: some View {
+    VStack {
+      CalendarView(calorieDays: $connectivityProvider.local)
+      Button("🔄") {
+        Task {
+          await refresh()
+        }
       }
     }
   }
@@ -16,3 +40,5 @@ struct WatchKitApp: App {
 #Preview{
   ContentView()
 }
+
+

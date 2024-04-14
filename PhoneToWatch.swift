@@ -1,8 +1,8 @@
 import Foundation
 import WatchConnectivity
 
-class Watch: NSObject, WCSessionDelegate {
-  static let shared = Watch()
+class PhoneToWatch: NSObject, WCSessionDelegate {
+  static let shared = PhoneToWatch()
   var local: [Bool] = []
 
   override init() {

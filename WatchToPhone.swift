@@ -1,7 +1,7 @@
 import Foundation
 import WatchConnectivity
 
-class WatchConnectivityProvider: NSObject, WCSessionDelegate, ObservableObject {
+class WatchToPhone: NSObject, WCSessionDelegate, ObservableObject {
   @Published var local: [Bool] = []
 
   override init() {

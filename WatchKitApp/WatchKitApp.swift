@@ -15,20 +15,21 @@ struct WatchKitApp: App {
 }
 
 struct ContentView: View {
-  //  @StateObject var store = Store()
+  @StateObject var watchStore = Store()
+  @StateObject private var phoneCxn = WatchToPhone()
   var health = Health()
-  @StateObject private var connectivityProvider = WatchConnectivityProvider()
 
   func refresh() async {
-    Store.shared.persist(data: connectivityProvider.local, forKey: "sharedFlags")
+    health.fetchCaloriesByMonth()
+    watchStore.local = health.caloriesByMonth
+    Store.shared.persist(data: phoneCxn.local, forKey: "sharedFlags")
     WidgetCenter.shared.reloadAllTimelines()
   }
 
-
   var body: some View {
     VStack {
-      CalendarView(calorieDays: $connectivityProvider.local)
-      Button("🔄") {
+      CalendarView(calorieDays: $phoneCxn.local)
+      Button("Sync") {
         Task {
           await refresh()
         }

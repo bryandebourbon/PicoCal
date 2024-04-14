@@ -37,7 +37,6 @@ struct Provider: TimelineProvider {
 
   func fetchSharedData(completion: @escaping (SimpleEntry) -> Void) {
     let flags = Store.shared.retrieve(forKey: "sharedFlags")
-
     let entry = SimpleEntry(date: Date(), flags: flags)
     completion(entry)
   }
@@ -53,7 +52,6 @@ struct WidgetExtensionEntryView: View {
   var entry: Provider.Entry
 
   var body: some View {
-
     CalendarDateTitle().offset(y: -10)
     CalendarView(
       calorieDays: .constant(entry.flags)

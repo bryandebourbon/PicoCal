@@ -28,7 +28,11 @@ struct ContentView: View {
 
   var body: some View {
     VStack {
+      Spacer()
+      Spacer()
       CalendarView(calorieDays: $phoneCxn.local)
+        .frame(width:170, height: 100)
+      Spacer()
       Button("Sync") {
         Task {
           await refresh()

@@ -35,11 +35,10 @@ class Health {
 
     let calendar = Calendar.current
     let now = Date()
-    let startOfMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: now))!
-    let endOfToday = calendar.startOfDay(for: calendar.date(byAdding: .day, value: 1, to: now)!)
+    let startOfMonth = calendar.startOfDay(for: calendar.date(from: calendar.dateComponents([.year, .month], from: now))!)
+    let endOfToday = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: now)!
 
-    print(startOfMonth)
-    print(endOfToday)
+    print("Fetching data from \(startOfMonth) to \(endOfToday)")
 
     let predicate = HKQuery.predicateForSamples(
       withStart: startOfMonth, end: endOfToday, options: .strictStartDate)
@@ -59,17 +58,21 @@ class Health {
       var dailyFlags: [Bool] = []
 
       results.enumerateStatistics(from: startOfMonth, to: endOfToday) { statistic, stop in
+        let date = statistic.startDate
+        print("Processing date: \(date)")
+
         if let sum = statistic.sumQuantity() {
           let calories = sum.doubleValue(for: HKUnit.kilocalorie())
+          print("Calories for \(date): \(calories)")
           dailyFlags.append(calories > 500)
-          print(dailyFlags)
+        } else {
+          print("No data for \(date)")
+          dailyFlags.append(false)
         }
       }
 
       self.caloriesByMonth = dailyFlags
-
       print(dailyFlags)
-
     }
 
     healthStore.execute(query)

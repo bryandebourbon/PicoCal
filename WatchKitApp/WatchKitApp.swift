@@ -22,7 +22,7 @@ struct ContentView: View {
   func refresh() async {
     health.fetchCaloriesByMonth()
     watchStore.local = health.caloriesByMonth
-    Store.shared.persist(data: phoneCxn.local, forKey: "sharedFlags")
+    Store.shared.persist(data: watchStore.local, forKey: "sharedFlags")
     WidgetCenter.shared.reloadAllTimelines()
   }
 
@@ -30,7 +30,7 @@ struct ContentView: View {
     VStack {
       Spacer()
       Spacer()
-      CalendarView(calorieDays: $phoneCxn.local)
+      CalendarView(calorieDays: $watchStore.local)
         .frame(width:170, height: 100)
       Spacer()
       Button("Sync") {

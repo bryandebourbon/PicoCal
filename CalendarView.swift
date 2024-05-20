@@ -1,7 +1,9 @@
 import SwiftUI
+import EventKit
 
 struct CalendarView: View {
   @Binding var calorieDays: [Bool]
+  @Binding var eventDays: [(morning: Bool, afternoon: Bool, evening: Bool)]?
   @Environment(\.calendar) var calendar
 
   @State var currentDay = Calendar.current.component(.day, from: Date())
@@ -11,12 +13,10 @@ struct CalendarView: View {
   let defaultView = AnyView(Color.clear)
 
   var body: some View {
-
     WrapGridView(
       items: fullMonthContent(),
       numberOfColumns: numberOfColumns
     )
-
   }
 
   func fullMonthContent() -> [AnyView] {
@@ -35,16 +35,19 @@ struct CalendarView: View {
       let dayOfMonth = calendar.component(.day, from: currentDate)
       let isToday = calendar.isDateInToday(currentDate)
       let isPast = isDateInPast(currentDate)
-
-//      print("calorieDays \(calorieDays)")
       let isComplete = day < calorieDays.count ? calorieDays[day] : false
+
+      let busyPeriods = eventDays?.count ?? 0 > day ? eventDays![day] : (morning: false, afternoon: false, evening: false)
 
       return AnyView(
         DefaultDayBlock(
           dayOfMonth: dayOfMonth,
           isToday: isToday,
           isPast: isPast,
-          isComplete: isComplete
+          isComplete: isComplete,
+          isBusyMorning: busyPeriods.morning,
+          isBusyAfternoon: busyPeriods.afternoon,
+          isBusyEvening: busyPeriods.evening
         )
       )
     }

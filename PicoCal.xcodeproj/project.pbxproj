@@ -15,6 +15,7 @@
 		2E7238892B4B7D51002CD589 /* Assests.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E7238872B4B7D51002CD589 /* Assests.xcassets */; };
 		2E72388A2B4B7D51002CD589 /* Assests.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E7238872B4B7D51002CD589 /* Assests.xcassets */; };
 		2E8285AA2BCB457600D5E9E6 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8285A92BCB457600D5E9E6 /* Background.swift */; };
+		2E9ADFD22BFBD89300F4D346 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9ADFD12BFBD89300F4D346 /* ContentViewModel.swift */; };
 		2EB643EA2B79DE9500134110 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB643E92B79DE9500134110 /* Store.swift */; };
 		2EB643EB2B79DE9500134110 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB643E92B79DE9500134110 /* Store.swift */; };
 		2ECD84772B8994F8001D811C /* DefaultDayBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD84762B8994F8001D811C /* DefaultDayBlock.swift */; };
@@ -104,6 +105,7 @@
 		2E7238872B4B7D51002CD589 /* Assests.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assests.xcassets; sourceTree = "<group>"; };
 		2E8285A92BCB457600D5E9E6 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Background.swift; path = WatchKitWidget/Background.swift; sourceTree = "<group>"; };
 		2E8285AC2BCB47D300D5E9E6 /* PicoCaliOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "PicoCaliOS-Info.plist"; sourceTree = "<group>"; };
+		2E9ADFD12BFBD89300F4D346 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		2EB643E22B79D89900134110 /* PicoCaliOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PicoCaliOS.entitlements; sourceTree = "<group>"; };
 		2EB643E32B79D8A600134110 /* PicoCalWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PicoCalWatch.entitlements; sourceTree = "<group>"; };
 		2EB643E42B79D8AE00134110 /* PicoCalWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PicoCalWidget.entitlements; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 			children = (
 				2ED6C2D72B4A3034002425B9 /* Assets.xcassets */,
 				2ED6C2D32B4A3033002425B9 /* WatchKitApp.swift */,
+				2E9ADFD12BFBD89300F4D346 /* ContentViewModel.swift */,
 			);
 			path = WatchKitApp;
 			sourceTree = "<group>";
@@ -386,6 +389,7 @@
 				2E245BAD2BBA45BB00797BDE /* WatchToPhone.swift in Sources */,
 				2EF5F4982BF3BE3F0098DF59 /* Constants.swift in Sources */,
 				2ED6C2FA2B4A34E1002425B9 /* CalendarView.swift in Sources */,
+				2E9ADFD22BFBD89300F4D346 /* ContentViewModel.swift in Sources */,
 				2ED6C2D42B4A3033002425B9 /* WatchKitApp.swift in Sources */,
 				2ECD84782B8994F8001D811C /* DefaultDayBlock.swift in Sources */,
 				2ECD847C2B8A3309001D811C /* WrapGridView.swift in Sources */,
@@ -626,6 +630,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "PicoCaliOS-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = PicoCal;
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "for events on picocal";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "To plot your calories on the calendar";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "to plot your calorie goals and streaks on the calendar";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -667,6 +672,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "PicoCaliOS-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = PicoCal;
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "for events on picocal";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "To plot your calories on the calendar";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "to plot your calorie goals and streaks on the calendar";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

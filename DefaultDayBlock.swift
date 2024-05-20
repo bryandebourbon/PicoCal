@@ -5,22 +5,39 @@ struct DefaultDayBlock: View {
   let isToday: Bool
   let isPast: Bool
   let isComplete: Bool
+  let isBusyMorning: Bool
+  let isBusyAfternoon: Bool
+  let isBusyEvening: Bool
 
-  let isBusyMorning: Bool = false
-  let isBusyAfternoon: Bool = false
-  let isBusyEvening: Bool = false
-
+  // Need support fort inverted color mode
   var body: some View {
-    ZStack {
-      (isComplete ? Color("goalComplete") : Color("default")).opacity(0.6)
-      (isToday ? Color("todayIndicator"): Color.clear).clipShape(Ellipse()).opacity(0.6)
-    }
-    .overlay(
-      Text("\(dayOfMonth)")
-        .bold()
-        .font(.system(size: 11))
-        .foregroundColor(Color("fontColor"))
-    )
+
+
+      VStack{
+        Spacer()
+        Spacer()
+        HStack(spacing:0){
+          isBusyMorning ? Color("busy") : Color.clear
+          isBusyAfternoon ? Color("busy") : Color.clear
+          isBusyEvening ? Color("busy") : Color.clear
+        }
+
+
+
+    }.overlay(    
+      VStack{
+        ZStack{
+          (isToday ? Color("todayIndicator"): Color.clear).clipShape(Ellipse()).padding(2).opacity(0.6)
+          Text("\(dayOfMonth)")
+            .bold()
+            .font(.system(size: 11))
+            .foregroundColor(Color("fontColor"))
+        }
+
+        Spacer()
+      }
+        )
+    .background((isComplete ? Color("goalComplete") : Color("default")).opacity(0.6))
   }
 }
 

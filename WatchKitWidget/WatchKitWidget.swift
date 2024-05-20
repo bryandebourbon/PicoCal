@@ -13,7 +13,9 @@ struct WidgetExtensionBundle: WidgetBundle {
 struct Provider: TimelineProvider {
   func placeholder(in context: Context) -> SimpleEntry {
     SimpleEntry(
-      date: Date(), flags: (1...30).map { _ in Bool.random() }
+      date: Date(),
+      flags: (1...30).map { _ in Bool.random() },
+      eventDays: (1...30).map { _ in (morning: Bool.random(), afternoon: Bool.random(), evening: Bool.random()) }
     )
   }
 
@@ -30,33 +32,47 @@ struct Provider: TimelineProvider {
         entries: [entry],
         policy: .after(nextUpdateDate)
       )
-      
+
       completion(timeline)
     }
   }
 
   func fetchSharedData(completion: @escaping (SimpleEntry) -> Void) {
     let flags = Store.shared.retrieve(forKey: "sharedFlags")
-    let entry = SimpleEntry(date: Date(), flags: flags)
-    completion(entry)
-  }
+    let eventKitFetcher = EventKitFetcher.shared
 
+    eventKitFetcher.initializeEventStore { granted, busyDays, error in
+      let entry: SimpleEntry
+      if granted, let busyDays = busyDays {
+        entry = SimpleEntry(date: Date(), flags: flags, eventDays: busyDays)
+      } else {
+        entry = SimpleEntry(
+          date: Date(),
+          flags: flags,
+          eventDays: (1...30).map { _ in (morning: false, afternoon: false, evening: false) }
+        )
+      }
+      completion(entry)
+    }
+  }
 }
 
 struct SimpleEntry: TimelineEntry {
   var date: Date
   let flags: [Bool]
+  let eventDays: [(morning: Bool, afternoon: Bool, evening: Bool)]
 }
 
 struct WidgetExtensionEntryView: View {
   var entry: Provider.Entry
 
   var body: some View {
-    CalendarDateTitle().offset(y: -10)
     CalendarView(
-      calorieDays: .constant(entry.flags)
+      calorieDays: .constant(entry.flags),
+      eventDays: .constant(entry.eventDays)
     )
-    .offset(x: -5, y: -15)
+    .frame(width: 180, height: 60)
+    .offset(x: -5, y: -10)
     .containerBackground(for: .widget) {
       Color.black
     }

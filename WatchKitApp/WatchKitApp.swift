@@ -15,23 +15,39 @@ struct WatchKitApp: App {
 }
 
 struct ContentView: View {
-  @StateObject var watchStore = Store()
   @StateObject private var phoneCxn = WatchToPhone()
+  @StateObject private var viewModel: ContentViewModel
+
+  @State private var eventDays: [(morning: Bool, afternoon: Bool, evening: Bool)]?
+
   var health = Health()
+  let eventKitFetcher = EventKitFetcher.shared
+
+  init() {
+    let phoneCxn = WatchToPhone()
+    _phoneCxn = StateObject(wrappedValue: phoneCxn)
+    _viewModel = StateObject(wrappedValue: ContentViewModel(phoneCxn: phoneCxn))
+  }
 
   func refresh() async {
     health.fetchCaloriesByMonth()
-    watchStore.local = health.caloriesByMonth
-    Store.shared.persist(data: watchStore.local, forKey: "sharedFlags")
-    WidgetCenter.shared.reloadAllTimelines()
+    viewModel.watchStoreLocal = health.caloriesByMonth
+
+    eventKitFetcher.initializeEventStore { granted, busyDays, error in
+      if granted, let busyDays = busyDays {
+        eventDays = busyDays
+      } else {
+        // Handle error or lack of permissions
+      }
+    }
   }
 
   var body: some View {
     VStack {
       Spacer()
       Spacer()
-      CalendarView(calorieDays: $watchStore.local)
-        .frame(width:170, height: 100)
+      CalendarView(calorieDays: $viewModel.watchStoreLocal, eventDays: $eventDays)
+        .frame(width: 170, height: 100)
       Spacer()
       Button("Sync") {
         Task {
@@ -42,8 +58,6 @@ struct ContentView: View {
   }
 }
 
-#Preview{
+#Preview {
   ContentView()
 }
-
-

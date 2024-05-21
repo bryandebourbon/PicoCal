@@ -15,23 +15,20 @@ struct WatchKitApp: App {
 }
 
 struct ContentView: View {
-  @StateObject private var phoneCxn = WatchToPhone()
-  @StateObject private var viewModel: ContentViewModel
-
+  @StateObject private var phone = WatchToPhone()
   @State private var eventDays: [(morning: Bool, afternoon: Bool, evening: Bool)]?
-
   var health = Health()
   let eventKitFetcher = EventKitFetcher.shared
+  @State var combinedArray: [Bool] = []
 
-  init() {
-    let phoneCxn = WatchToPhone()
-    _phoneCxn = StateObject(wrappedValue: phoneCxn)
-    _viewModel = StateObject(wrappedValue: ContentViewModel(phoneCxn: phoneCxn))
-  }
+
+
+
 
   func refresh() async {
     health.fetchCaloriesByMonth()
-    viewModel.watchStoreLocal = health.caloriesByMonth
+    combinedArray = orBooleanArrays(health.caloriesByMonth, phone.local)
+    Store.shared.persist(data: combinedArray, forKey: "sharedFlags")
 
     eventKitFetcher.initializeEventStore { granted, busyDays, error in
       if granted, let busyDays = busyDays {
@@ -46,7 +43,7 @@ struct ContentView: View {
     VStack {
       Spacer()
       Spacer()
-      CalendarView(calorieDays: $viewModel.watchStoreLocal, eventDays: $eventDays)
+      CalendarView(calorieDays: $combinedArray, eventDays: $eventDays)
         .frame(width: 170, height: 100)
       Spacer()
       Button("Sync") {
@@ -57,7 +54,18 @@ struct ContentView: View {
     }
   }
 }
+func orBooleanArrays(_ array1: [Bool], _ array2: [Bool]) -> [Bool] {
+  let maxLength = max(array1.count, array2.count)
 
+  var resultArray: [Bool] = []
+  for i in 0..<maxLength {
+    let value1 = i < array1.count ? array1[i] : false
+    let value2 = i < array2.count ? array2[i] : false
+    resultArray.append(value1 || value2)
+  }
+
+  return resultArray
+}
 #Preview {
   ContentView()
 }

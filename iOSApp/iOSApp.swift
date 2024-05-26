@@ -42,6 +42,8 @@ struct ContentView: View {
       CalendarView(
         calorieDays: $phoneStore.local, eventDays: $eventDays
       )
+      .frame(width: 170, height: 100)
+      .padding()
       Button("Sync") {
         Task {
           await refresh()

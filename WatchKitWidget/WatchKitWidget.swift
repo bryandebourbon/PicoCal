@@ -67,17 +67,22 @@ struct WidgetExtensionEntryView: View {
   var entry: Provider.Entry
 
   var body: some View {
-    CalendarView(
-      calorieDays: .constant(entry.flags),
-      eventDays: .constant(entry.eventDays)
-    )
-    .frame(width: 180, height: 60)
-    .offset(x: -5, y: -10)
+    VStack {
+      CalendarDateTitle()
+        .frame(height: 1)
+      CalendarView(
+        calorieDays: .constant(entry.flags),
+        eventDays: .constant(entry.eventDays)
+      ).offset(x:-6)
+
+    }.frame(width: 180, height: 56)
+      .offset(y:-8 )
     .containerBackground(for: .widget) {
       Color.black
     }
+    }
   }
-}
+
 
 struct WidgetExtension: Widget {
   var body: some WidgetConfiguration {
@@ -88,3 +93,4 @@ struct WidgetExtension: Widget {
     .description("A Calendar for tiny spaces.")
   }
 }
+

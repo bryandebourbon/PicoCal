@@ -43,7 +43,7 @@ struct ContentView: View {
     VStack {
       Spacer()
       Spacer()
-
+      CalendarDateTitle()
       CalendarView(calorieDays: $combinedArray, eventDays: $eventDays)
         .frame(width: 170, height: 100)
       Spacer()

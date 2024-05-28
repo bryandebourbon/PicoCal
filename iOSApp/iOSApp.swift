@@ -39,6 +39,8 @@ struct ContentView: View {
 
   var body: some View {
     VStack {
+
+      CalendarDateTitle()
       CalendarView(
         calorieDays: $phoneStore.local, eventDays: $eventDays
       )

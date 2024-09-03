@@ -2,6 +2,7 @@ import Combine
 import WidgetKit
 import SwiftUI
 
+@MainActor
 class ContentViewModel: ObservableObject {
   @Published var watchStoreLocal: [Bool] = []
   @Published var phoneCxnLocal: [Bool] = []

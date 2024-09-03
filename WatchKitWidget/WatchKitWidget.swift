@@ -19,11 +19,11 @@ struct Provider: TimelineProvider {
     )
   }
 
-  func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> Void) {
+    @MainActor func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> Void) {
     fetchSharedData { entry in completion(entry) }
   }
 
-  func getTimeline(in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> Void) {
+    @MainActor func getTimeline(in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> Void) {
     fetchSharedData { entry in
 
       let nextUpdateDate = Calendar.current.date(byAdding: .minute, value: 10, to: entry.date)!
@@ -37,7 +37,7 @@ struct Provider: TimelineProvider {
     }
   }
 
-  func fetchSharedData(completion: @escaping (SimpleEntry) -> Void) {
+    @MainActor func fetchSharedData(completion: @escaping (SimpleEntry) -> Void) {
     let flags = Store.shared.retrieve(forKey: "sharedFlags")
     let eventKitFetcher = EventKitFetcher.shared
 

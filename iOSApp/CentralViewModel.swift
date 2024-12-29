@@ -6,6 +6,7 @@ final class CentralViewModel: ObservableObject, CalendarViewProviding {
   @Published var busyDays: [(Bool, Bool, Bool)] = []
 
   private let dataManager = DataManager.shared
+ 
 
   func refresh() async {
     do {
@@ -15,6 +16,13 @@ final class CentralViewModel: ObservableObject, CalendarViewProviding {
       // 2) Read latest from data manager’s store/fields
       self.healthFlags = dataManager.store.local
 
+        do {
+            let reply = try await  PhoneToWatch.shared.sendMessageAsync(data: self.healthFlags)
+            print("Phone → Watch success: \(reply)")
+        } catch {
+            print("Phone → Watch error sending data: \(error)")
+        }
+        
       // 3) Build a bounded day range for the current month
       let calendar = Calendar.current
       let now = Date()

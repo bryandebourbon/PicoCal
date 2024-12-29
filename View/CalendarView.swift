@@ -1,11 +1,30 @@
 import SwiftUI
 import EventKit
 
-struct CalendarView: View {
-  @Binding var calorieDays: [Bool]
-  @Binding var eventDays: [(morning: Bool, afternoon: Bool, evening: Bool)]?
+
+/// A protocol that exposes the minimal data needed by CalendarView.
+protocol CalendarViewProviding: ObservableObject {
+  var healthFlags: [Bool] { get }
+  var busyDays: [(Bool, Bool, Bool)] { get }
+}
+
+struct CalendarView<T: CalendarViewProviding>: View {
+    @ObservedObject var viewModel: T
+     
+  var body: some View {
+    CalendarStaticView(
+      healthFlags: viewModel.healthFlags,
+      busyDays: viewModel.busyDays
+    )
+  }
+}
+
+struct CalendarStaticView: View {
+    let healthFlags: [Bool]
+    let busyDays: [(Bool, Bool, Bool)]
   @Environment(\.calendar) var calendar
 
+  // Optional: if you still need them
   @State var currentDay = Calendar.current.component(.day, from: Date())
   @State var calendarMonth = CalendarMonth()
 
@@ -19,35 +38,47 @@ struct CalendarView: View {
     )
   }
 
-  func fullMonthContent() -> [AnyView] {
+  private func fullMonthContent() -> [AnyView] {
     let startOfMonth = calendar.startOfMonth(for: Date())
-    let range = calendar.range(of: .day, in: .month, for: Date())!
+    let dayRange = calendar.range(of: .day, in: .month, for: startOfMonth) ?? (1..<1)
+
     var dayViews: [AnyView] = []
 
+    // Calculate the offset for the first weekday
     let weekdayOfFirstDay = calendar.component(.weekday, from: startOfMonth)
     let offset = (weekdayOfFirstDay - calendar.firstWeekday + 7) % 7
     for _ in 0..<offset {
       dayViews.append(AnyView(defaultView))
     }
 
-    dayViews += (0..<range.count).map { day in
-      let currentDate = calendar.date(byAdding: .day, value: day, to: startOfMonth)!
-      let dayOfMonth = calendar.component(.day, from: currentDate)
+    // Build a view for each day in dayRange (1-based)
+    for dayOfMonth in dayRange {
+      let currentDate = calendar.date(byAdding: .day, value: dayOfMonth - 1, to: startOfMonth)!
       let isToday = calendar.isDateInToday(currentDate)
       let isPast = isDateInPast(currentDate)
-      let isComplete = day < calorieDays.count ? calorieDays[day] : false
+      let index = dayOfMonth - 1
 
-      let busyPeriods = eventDays?.count ?? 0 > day ? eventDays![day] : (morning: false, afternoon: false, evening: false)
+      // Safely access flags
+      let isComplete = index < healthFlags.count
+        ? healthFlags[index]
+        : false
 
-      return AnyView(
-        DefaultDayBlock(
-          dayOfMonth: dayOfMonth,
-          isToday: isToday,
-          isPast: isPast,
-          isComplete: isComplete,
-          isBusyMorning: busyPeriods.morning,
-          isBusyAfternoon: busyPeriods.afternoon,
-          isBusyEvening: busyPeriods.evening
+      let busyCount = busyDays.count
+      let busyPeriods = index < busyCount
+        ? busyDays[index]
+        : (false, false, false)
+
+      dayViews.append(
+        AnyView(
+          DefaultDayBlock(
+            dayOfMonth: dayOfMonth,
+            isToday: isToday,
+            isPast: isPast,
+            isComplete: isComplete,
+            isBusyMorning: busyPeriods.0,
+            isBusyAfternoon: busyPeriods.1,
+            isBusyEvening: busyPeriods.2
+          )
         )
       )
     }
@@ -55,7 +86,7 @@ struct CalendarView: View {
     return dayViews
   }
 
-  func isDateInPast(_ date: Date) -> Bool {
+  private func isDateInPast(_ date: Date) -> Bool {
     return calendar.startOfDay(for: date) < calendar.startOfDay(for: Date())
   }
 }

@@ -10,6 +10,11 @@
 		2E110E2A2D2198CC00A7425A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E5238812B49BC63008988E0 /* WidgetKit.framework */; };
 		2E110E2B2D2198CC00A7425A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E5238832B49BC64008988E0 /* SwiftUI.framework */; };
 		2E110E392D2198CD00A7425A /* HomeWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 2E110E292D2198CC00A7425A /* HomeWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		2E110E442D21D40800A7425A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E110E432D21D3F800A7425A /* DataManager.swift */; };
+		2E110E452D21D40800A7425A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E110E432D21D3F800A7425A /* DataManager.swift */; };
+		2E110E462D21D40800A7425A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E110E432D21D3F800A7425A /* DataManager.swift */; };
+		2E110E4A2D21D52C00A7425A /* CentralViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E110E472D21D52900A7425A /* CentralViewModel.swift */; };
+		2E110E4C2D21D8B400A7425A /* WatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E110E4B2D21D8B000A7425A /* WatchViewModel.swift */; };
 		2E245BAA2BB8EA3300797BDE /* EventKitInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E66F5952B462A1A007AFEE7 /* EventKitInfo.swift */; };
 		2E245BAD2BBA45BB00797BDE /* WatchToPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E245BAC2BBA45BB00797BDE /* WatchToPhone.swift */; };
 		2E2D44922BB8E59C00CE74C7 /* PhoneToWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2D44912BB8E59C00CE74C7 /* PhoneToWatch.swift */; };
@@ -18,7 +23,6 @@
 		2E7238892B4B7D51002CD589 /* Assests.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E7238872B4B7D51002CD589 /* Assests.xcassets */; };
 		2E72388A2B4B7D51002CD589 /* Assests.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E7238872B4B7D51002CD589 /* Assests.xcassets */; };
 		2E8285AA2BCB457600D5E9E6 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8285A92BCB457600D5E9E6 /* Background.swift */; };
-		2E9ADFD22BFBD89300F4D346 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9ADFD12BFBD89300F4D346 /* ContentViewModel.swift */; };
 		2EB643EA2B79DE9500134110 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB643E92B79DE9500134110 /* Store.swift */; };
 		2EB643EB2B79DE9500134110 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB643E92B79DE9500134110 /* Store.swift */; };
 		2ECD84772B8994F8001D811C /* DefaultDayBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD84762B8994F8001D811C /* DefaultDayBlock.swift */; };
@@ -112,23 +116,25 @@
 
 /* Begin PBXFileReference section */
 		2E110E292D2198CC00A7425A /* HomeWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HomeWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E110E432D21D3F800A7425A /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		2E110E472D21D52900A7425A /* CentralViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralViewModel.swift; sourceTree = "<group>"; };
+		2E110E4B2D21D8B000A7425A /* WatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchViewModel.swift; sourceTree = "<group>"; };
 		2E245BAC2BBA45BB00797BDE /* WatchToPhone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchToPhone.swift; sourceTree = "<group>"; };
 		2E2D44912BB8E59C00CE74C7 /* PhoneToWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneToWatch.swift; sourceTree = "<group>"; };
 		2E5238742B479A04008988E0 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; path = README; sourceTree = SOURCE_ROOT; };
 		2E5238812B49BC63008988E0 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = /System/Library/Frameworks/WidgetKit.framework; sourceTree = "<absolute>"; };
 		2E5238832B49BC64008988E0 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = /System/Library/Frameworks/SwiftUI.framework; sourceTree = "<absolute>"; };
 		2E66F5912B4627EA007AFEE7 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
-		2E66F5952B462A1A007AFEE7 /* EventKitInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventKitInfo.swift; sourceTree = "<group>"; };
+		2E66F5952B462A1A007AFEE7 /* EventKitInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EventKitInfo.swift; path = ../EventKitInfo.swift; sourceTree = "<group>"; };
 		2E66F5972B4640D3007AFEE7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		2E6754482B7AF9EF00C6619C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E7238872B4B7D51002CD589 /* Assests.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assests.xcassets; sourceTree = "<group>"; };
-		2E8285A92BCB457600D5E9E6 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Background.swift; path = WatchKitWidget/Background.swift; sourceTree = "<group>"; };
+		2E8285A92BCB457600D5E9E6 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Background.swift; path = ../WatchKitWidget/Background.swift; sourceTree = "<group>"; };
 		2E8285AC2BCB47D300D5E9E6 /* PicoCaliOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PicoCaliOS-Info.plist"; sourceTree = "<group>"; };
-		2E9ADFD12BFBD89300F4D346 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		2EB643E22B79D89900134110 /* PicoCaliOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PicoCaliOS.entitlements; sourceTree = "<group>"; };
 		2EB643E32B79D8A600134110 /* PicoCalWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PicoCalWatch.entitlements; sourceTree = "<group>"; };
 		2EB643E42B79D8AE00134110 /* PicoCalWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PicoCalWidget.entitlements; sourceTree = "<group>"; };
-		2EB643E92B79DE9500134110 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Store.swift; path = WatchKitWidget/Store.swift; sourceTree = "<group>"; };
+		2EB643E92B79DE9500134110 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Store.swift; path = ../WatchKitWidget/Store.swift; sourceTree = "<group>"; };
 		2ECD84762B8994F8001D811C /* DefaultDayBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDayBlock.swift; sourceTree = "<group>"; };
 		2ECD847A2B8A3309001D811C /* WrapGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrapGridView.swift; sourceTree = "<group>"; };
 		2ECD847E2B8D68BF001D811C /* CalendarDateTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDateTitle.swift; sourceTree = "<group>"; };
@@ -141,7 +147,7 @@
 		2ED6C2E72B4A30FF002425B9 /* PicoCalWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PicoCalWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		2ED6C2EB2B4A3100002425B9 /* WatchKitWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchKitWidget.swift; sourceTree = "<group>"; };
 		2ED6C2EF2B4A3102002425B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		2EFA15DD2B7A8D7E00F34B25 /* Health.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Health.swift; sourceTree = "<group>"; };
+		2EFA15DD2B7A8D7E00F34B25 /* Health.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Health.swift; path = ../Health.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -194,6 +200,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E110E3F2D21CD0D00A7425A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2E66F5912B4627EA007AFEE7 /* CalendarView.swift */,
+				2ECD847A2B8A3309001D811C /* WrapGridView.swift */,
+				2ECD847E2B8D68BF001D811C /* CalendarDateTitle.swift */,
+				2ECD84762B8994F8001D811C /* DefaultDayBlock.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2E110E402D21CD2400A7425A /* WatchConnectivity */ = {
+			isa = PBXGroup;
+			children = (
+				2E2D44912BB8E59C00CE74C7 /* PhoneToWatch.swift */,
+				2E245BAC2BBA45BB00797BDE /* WatchToPhone.swift */,
+			);
+			path = WatchConnectivity;
+			sourceTree = "<group>";
+		};
+		2E110E422D21D29200A7425A /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				2E110E432D21D3F800A7425A /* DataManager.swift */,
+				2E8285A92BCB457600D5E9E6 /* Background.swift */,
+				2EB643E92B79DE9500134110 /* Store.swift */,
+				2EFA15DD2B7A8D7E00F34B25 /* Health.swift */,
+				2E66F5952B462A1A007AFEE7 /* EventKitInfo.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		2E3721FC2B45F685003C4B66 = {
 			isa = PBXGroup;
 			children = (
@@ -203,16 +241,9 @@
 				2EB643E42B79D8AE00134110 /* PicoCalWidget.entitlements */,
 				2E66F5972B4640D3007AFEE7 /* README.md */,
 				2E7238872B4B7D51002CD589 /* Assests.xcassets */,
-				2E8285A92BCB457600D5E9E6 /* Background.swift */,
-				2EB643E92B79DE9500134110 /* Store.swift */,
-				2EFA15DD2B7A8D7E00F34B25 /* Health.swift */,
-				2E66F5952B462A1A007AFEE7 /* EventKitInfo.swift */,
-				2E2D44912BB8E59C00CE74C7 /* PhoneToWatch.swift */,
-				2E245BAC2BBA45BB00797BDE /* WatchToPhone.swift */,
-				2ECD847A2B8A3309001D811C /* WrapGridView.swift */,
-				2E66F5912B4627EA007AFEE7 /* CalendarView.swift */,
-				2ECD847E2B8D68BF001D811C /* CalendarDateTitle.swift */,
-				2ECD84762B8994F8001D811C /* DefaultDayBlock.swift */,
+				2E110E422D21D29200A7425A /* Data */,
+				2E110E402D21CD2400A7425A /* WatchConnectivity */,
+				2E110E3F2D21CD0D00A7425A /* View */,
 				2ED6C2C02B4A3030002425B9 /* iOSApp */,
 				2E110E2C2D2198CC00A7425A /* HomeWidget */,
 				2ED6C2D22B4A3033002425B9 /* WatchKitApp */,
@@ -247,6 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				2ED6C2C52B4A3033002425B9 /* Assets.xcassets */,
+				2E110E472D21D52900A7425A /* CentralViewModel.swift */,
 				2ED6C2C12B4A3030002425B9 /* iOSApp.swift */,
 			);
 			path = iOSApp;
@@ -257,7 +289,7 @@
 			children = (
 				2ED6C2D72B4A3034002425B9 /* Assets.xcassets */,
 				2ED6C2D32B4A3033002425B9 /* WatchKitApp.swift */,
-				2E9ADFD12BFBD89300F4D346 /* ContentViewModel.swift */,
+				2E110E4B2D21D8B000A7425A /* WatchViewModel.swift */,
 			);
 			path = WatchKitApp;
 			sourceTree = "<group>";
@@ -456,7 +488,9 @@
 				2E8285AA2BCB457600D5E9E6 /* Background.swift in Sources */,
 				2ECD847F2B8D68BF001D811C /* CalendarDateTitle.swift in Sources */,
 				2ED6C2C22B4A3030002425B9 /* iOSApp.swift in Sources */,
+				2E110E462D21D40800A7425A /* DataManager.swift in Sources */,
 				2ECD847B2B8A3309001D811C /* WrapGridView.swift in Sources */,
+				2E110E4A2D21D52C00A7425A /* CentralViewModel.swift in Sources */,
 				2ECD84772B8994F8001D811C /* DefaultDayBlock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -470,9 +504,10 @@
 				2ECD84802B8D68BF001D811C /* CalendarDateTitle.swift in Sources */,
 				2ED6C30A2B4A3501002425B9 /* EventKitInfo.swift in Sources */,
 				2E245BAD2BBA45BB00797BDE /* WatchToPhone.swift in Sources */,
+				2E110E4C2D21D8B400A7425A /* WatchViewModel.swift in Sources */,
 				2ED6C2FA2B4A34E1002425B9 /* CalendarView.swift in Sources */,
-				2E9ADFD22BFBD89300F4D346 /* ContentViewModel.swift in Sources */,
 				2ED6C2D42B4A3033002425B9 /* WatchKitApp.swift in Sources */,
+				2E110E442D21D40800A7425A /* DataManager.swift in Sources */,
 				2ECD84782B8994F8001D811C /* DefaultDayBlock.swift in Sources */,
 				2ECD847C2B8A3309001D811C /* WrapGridView.swift in Sources */,
 			);
@@ -489,6 +524,7 @@
 				2ED6C2FB2B4A34E2002425B9 /* CalendarView.swift in Sources */,
 				2ED6C2EC2B4A3100002425B9 /* WatchKitWidget.swift in Sources */,
 				2ECD84792B8994F8001D811C /* DefaultDayBlock.swift in Sources */,
+				2E110E452D21D40800A7425A /* DataManager.swift in Sources */,
 				2ECD847D2B8A3309001D811C /* WrapGridView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

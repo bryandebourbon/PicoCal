@@ -14,7 +14,16 @@
 		2E110E452D21D40800A7425A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E110E432D21D3F800A7425A /* DataManager.swift */; };
 		2E110E462D21D40800A7425A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E110E432D21D3F800A7425A /* DataManager.swift */; };
 		2E110E4A2D21D52C00A7425A /* CentralViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E110E472D21D52900A7425A /* CentralViewModel.swift */; };
-		2E110E4C2D21D8B400A7425A /* WatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E110E4B2D21D8B000A7425A /* WatchViewModel.swift */; };
+		2E110E4E2D21EF1C00A7425A /* CentralViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E110E472D21D52900A7425A /* CentralViewModel.swift */; };
+		2E110E522D21F39F00A7425A /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB643E92B79DE9500134110 /* Store.swift */; };
+		2E110E532D21F3A300A7425A /* Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFA15DD2B7A8D7E00F34B25 /* Health.swift */; };
+		2E110E542D21F3A700A7425A /* EventKitInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E66F5952B462A1A007AFEE7 /* EventKitInfo.swift */; };
+		2E110E552D21F3AC00A7425A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E110E432D21D3F800A7425A /* DataManager.swift */; };
+		2E110E562D21F48300A7425A /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E66F5912B4627EA007AFEE7 /* CalendarView.swift */; };
+		2E110E572D21F4C800A7425A /* WrapGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD847A2B8A3309001D811C /* WrapGridView.swift */; };
+		2E110E582D21F4CD00A7425A /* CalendarDateTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD847E2B8D68BF001D811C /* CalendarDateTitle.swift */; };
+		2E110E592D21F4D100A7425A /* DefaultDayBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD84762B8994F8001D811C /* DefaultDayBlock.swift */; };
+		2E110E5A2D21FC5200A7425A /* Assests.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E7238872B4B7D51002CD589 /* Assests.xcassets */; };
 		2E245BAA2BB8EA3300797BDE /* EventKitInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E66F5952B462A1A007AFEE7 /* EventKitInfo.swift */; };
 		2E245BAD2BBA45BB00797BDE /* WatchToPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E245BAC2BBA45BB00797BDE /* WatchToPhone.swift */; };
 		2E2D44922BB8E59C00CE74C7 /* PhoneToWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2D44912BB8E59C00CE74C7 /* PhoneToWatch.swift */; };
@@ -118,7 +127,6 @@
 		2E110E292D2198CC00A7425A /* HomeWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HomeWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E110E432D21D3F800A7425A /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		2E110E472D21D52900A7425A /* CentralViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralViewModel.swift; sourceTree = "<group>"; };
-		2E110E4B2D21D8B000A7425A /* WatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchViewModel.swift; sourceTree = "<group>"; };
 		2E245BAC2BBA45BB00797BDE /* WatchToPhone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchToPhone.swift; sourceTree = "<group>"; };
 		2E2D44912BB8E59C00CE74C7 /* PhoneToWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneToWatch.swift; sourceTree = "<group>"; };
 		2E5238742B479A04008988E0 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; path = README; sourceTree = SOURCE_ROOT; };
@@ -241,6 +249,7 @@
 				2EB643E42B79D8AE00134110 /* PicoCalWidget.entitlements */,
 				2E66F5972B4640D3007AFEE7 /* README.md */,
 				2E7238872B4B7D51002CD589 /* Assests.xcassets */,
+				2E110E472D21D52900A7425A /* CentralViewModel.swift */,
 				2E110E422D21D29200A7425A /* Data */,
 				2E110E402D21CD2400A7425A /* WatchConnectivity */,
 				2E110E3F2D21CD0D00A7425A /* View */,
@@ -278,7 +287,6 @@
 			isa = PBXGroup;
 			children = (
 				2ED6C2C52B4A3033002425B9 /* Assets.xcassets */,
-				2E110E472D21D52900A7425A /* CentralViewModel.swift */,
 				2ED6C2C12B4A3030002425B9 /* iOSApp.swift */,
 			);
 			path = iOSApp;
@@ -289,7 +297,6 @@
 			children = (
 				2ED6C2D72B4A3034002425B9 /* Assets.xcassets */,
 				2ED6C2D32B4A3033002425B9 /* WatchKitApp.swift */,
-				2E110E4B2D21D8B000A7425A /* WatchViewModel.swift */,
 			);
 			path = WatchKitApp;
 			sourceTree = "<group>";
@@ -436,6 +443,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E110E5A2D21FC5200A7425A /* Assests.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,6 +481,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E110E572D21F4C800A7425A /* WrapGridView.swift in Sources */,
+				2E110E522D21F39F00A7425A /* Store.swift in Sources */,
+				2E110E562D21F48300A7425A /* CalendarView.swift in Sources */,
+				2E110E552D21F3AC00A7425A /* DataManager.swift in Sources */,
+				2E110E532D21F3A300A7425A /* Health.swift in Sources */,
+				2E110E582D21F4CD00A7425A /* CalendarDateTitle.swift in Sources */,
+				2E110E542D21F3A700A7425A /* EventKitInfo.swift in Sources */,
+				2E110E592D21F4D100A7425A /* DefaultDayBlock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,7 +520,7 @@
 				2ECD84802B8D68BF001D811C /* CalendarDateTitle.swift in Sources */,
 				2ED6C30A2B4A3501002425B9 /* EventKitInfo.swift in Sources */,
 				2E245BAD2BBA45BB00797BDE /* WatchToPhone.swift in Sources */,
-				2E110E4C2D21D8B400A7425A /* WatchViewModel.swift in Sources */,
+				2E110E4E2D21EF1C00A7425A /* CentralViewModel.swift in Sources */,
 				2ED6C2FA2B4A34E1002425B9 /* CalendarView.swift in Sources */,
 				2ED6C2D42B4A3033002425B9 /* WatchKitApp.swift in Sources */,
 				2E110E442D21D40800A7425A /* DataManager.swift in Sources */,

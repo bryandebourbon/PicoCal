@@ -10,17 +10,15 @@ struct WatchKitApp: App {
       VStack {
           WatchContentView()
       }
-//      .edgesIgnoringSafeArea(.all)
     }
   }
 }
 
 struct WatchContentView: View {
-  @StateObject var viewModel = WatchCentralViewModel()
-
+  @StateObject var viewModel = CentralViewModel()
   var body: some View {
     VStack {
-      CalendarView(viewModel: viewModel)  // <— T is WatchCentralViewModel
+      CalendarView(viewModel: viewModel)
       Button("Sync") {
         Task { await viewModel.refresh() }
       }

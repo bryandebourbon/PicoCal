@@ -1,86 +1,107 @@
 //
-//  HomeWidget.swift
-//  HomeWidget
+//  iOSWidgetExtension.swift
+//  YourAppOrExtensionName
 //
-//  Created by Bryan de Bourbon on 12/29/24.
+//  A single-file example for creating an iPhone widget
+//  that shows your CalendarStaticView in appropriate sizes.
 //
 
-import WidgetKit
 import SwiftUI
+import WidgetKit
+import EventKit
 
-struct Provider: AppIntentTimelineProvider {
-    func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent())
-    }
+// MARK: - 1) Widget Bundle
+@main
+struct iOSWidgetExtensionBundle: WidgetBundle {
+  var body: some Widget {
+    iOSWidgetExtension()
+  }
+}
 
-    func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: configuration)
+// MARK: - 2) Timeline Entry
+struct iOSWidgetEntry: TimelineEntry {
+  let date: Date
+  let flags: [Bool]
+  let eventDays: [(morning: Bool, afternoon: Bool, evening: Bool)]
+}
+
+// MARK: - 3) Timeline Provider
+struct iOSWidgetProvider: TimelineProvider {
+  func placeholder(in context: Context) -> iOSWidgetEntry {
+    iOSWidgetEntry(
+      date: Date(),
+      flags: (1...30).map { _ in Bool.random() },
+      eventDays: (1...30).map { _ in
+        (morning: Bool.random(), afternoon: Bool.random(), evening: Bool.random())
+      }
+    )
+  }
+
+  func getSnapshot(in context: Context, completion: @escaping (iOSWidgetEntry) -> Void) {
+    fetchDataForWidget { entry in
+      completion(entry)
     }
+  }
+
+  func getTimeline(in context: Context, completion: @escaping (Timeline<iOSWidgetEntry>) -> Void) {
+    fetchDataForWidget { entry in
+      let nextUpdate = Calendar.current.date(byAdding: .minute, value: 10, to: entry.date) ?? Date()
+      let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
+      completion(timeline)
+    }
+  }
+
+  private func fetchDataForWidget(completion: @escaping (iOSWidgetEntry) -> Void) {
+    let storeFlags = Store.shared.retrieve(forKey: "sharedFlags")
+
+    Task {
+      do {
+        // This assumes your EventKitFetcher has an async method
+        // that returns [(morning: Bool, afternoon: Bool, evening: Bool)].
+        let busyDays = try await EventKitFetcher.shared.initializeEventStore()
+
+        let entry = iOSWidgetEntry(date: Date(), flags: storeFlags, eventDays: busyDays)
+        completion(entry)
+      } catch {
+        // If an error occurs, provide fallback data
+        let fallback = iOSWidgetEntry(
+          date: Date(),
+          flags: storeFlags,
+          eventDays: (1...30).map { _ in (false, false, false) }
+        )
+        completion(fallback)
+      }
+    }
+  }
+}
+
+// MARK: - 4) The SwiftUI View for a Single Timeline Entry
+struct iOSWidgetExtensionEntryView: View {
+    let entry: iOSWidgetEntry
+    @Environment(\.widgetFamily) var family
     
-    func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<SimpleEntry> {
-        var entries: [SimpleEntry] = []
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, configuration: configuration)
-            entries.append(entry)
-        }
-
-        return Timeline(entries: entries, policy: .atEnd)
-    }
-
-//    func relevances() async -> WidgetRelevances<ConfigurationAppIntent> {
-//        // Generate a list containing the contexts this widget is relevant in.
-//    }
-}
-
-struct SimpleEntry: TimelineEntry {
-    let date: Date
-    let configuration: ConfigurationAppIntent
-}
-
-struct HomeWidgetEntryView : View {
-    var entry: Provider.Entry
-
     var body: some View {
-        Text("Time:")
-        Text(entry.date, style: .time)
+        VStack(spacing: 8) {
+          
+            CalendarDateTitle()
 
-        Text("Favorite Emoji:")
-        Text(entry.configuration.favoriteEmoji)
-    }
-}
-
-struct HomeWidget: Widget {
-    let kind: String = "HomeWidget"
-
-    var body: some WidgetConfiguration {
-        AppIntentConfiguration(kind: kind, intent: ConfigurationAppIntent.self, provider: Provider()) { entry in
-            HomeWidgetEntryView(entry: entry)
-                .containerBackground(.fill.tertiary, for: .widget)
+            CalendarStaticView(healthFlags: entry.flags, busyDays: entry.eventDays)
+                
         }
+        .containerBackground(.black, for: .widget)
     }
 }
 
-extension ConfigurationAppIntent {
-    fileprivate static var smiley: ConfigurationAppIntent {
-        let intent = ConfigurationAppIntent()
-        intent.favoriteEmoji = "😀"
-        return intent
-    }
-    
-    fileprivate static var starEyes: ConfigurationAppIntent {
-        let intent = ConfigurationAppIntent()
-        intent.favoriteEmoji = "🤩"
-        return intent
-    }
-}
+// MARK: - 5) The Widget Configuration
+struct iOSWidgetExtension: Widget {
+  let kind: String = "iOSWidgetExtension"
 
-#Preview(as: .systemSmall) {
-    HomeWidget()
-} timeline: {
-    SimpleEntry(date: .now, configuration: .smiley)
-    SimpleEntry(date: .now, configuration: .starEyes)
+  var body: some WidgetConfiguration {
+    StaticConfiguration(kind: kind, provider: iOSWidgetProvider()) { entry in
+      iOSWidgetExtensionEntryView(entry: entry)
+    }
+    .configurationDisplayName("PicoCal (iPhone)")
+    .description("A compact iPhone widget for PicoCal.")
+    .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
+  }
 }

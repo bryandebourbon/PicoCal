@@ -3,7 +3,9 @@ import WatchConnectivity
 import SwiftUI
 
 class WatchToPhone: NSObject, WCSessionDelegate, ObservableObject {
-  @Published var local: [Bool] = []
+    
+    static let shared = WatchToPhone()
+    @Published var local: [Bool] = []
 
   override init() {
     super.init()

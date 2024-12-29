@@ -9,7 +9,8 @@ struct WatchKitApp: App {
     WindowGroup {
       VStack {
         ContentView()
-      }.edgesIgnoringSafeArea(.all)
+      }
+      .edgesIgnoringSafeArea(.all)
     }
   }
 }
@@ -21,21 +22,27 @@ struct ContentView: View {
   let eventKitFetcher = EventKitFetcher.shared
   @State var combinedArray: [Bool] = []
 
-
-
-
-
   func refresh() async {
-    health.fetchCaloriesByMonth()
-    combinedArray = orBooleanArrays(health.caloriesByMonth, phone.local)
-    Store.shared.persist(data: combinedArray, forKey: "sharedFlags")
+    // 1) Fetch HealthKit data with try/await
+    do {
+      let newHealthData = try await health.fetchCaloriesByMonth()
+      // 2) Merge it with data from `phone.local`
+      combinedArray = orBooleanArrays(newHealthData, phone.local)
+      // 3) Persist the merged array
+      Store.shared.persist(data: combinedArray, forKey: "sharedFlags")
+    } catch {
+      // Handle or log HealthKit errors
+      print("[Health] Error fetching calories: \(error)")
+    }
 
-    eventKitFetcher.initializeEventStore { granted, busyDays, error in
-      if granted, let busyDays = busyDays {
-        eventDays = busyDays
-      } else {
-        // Handle error or lack of permissions
-      }
+    // 4) Fetch EventKit data asynchronously
+    do {
+      let busyDays = try await eventKitFetcher.initializeEventStore()
+      eventDays = busyDays
+    } catch {
+      // Handle error or lack of permissions
+      print("[EventKit] Error initializing: \(error)")
+      eventDays = (1...30).map { _ in (morning: false, afternoon: false, evening: false) }
     }
   }
 
@@ -44,8 +51,11 @@ struct ContentView: View {
       Spacer()
       Spacer()
       CalendarDateTitle()
-      CalendarView(calorieDays: $combinedArray, eventDays: $eventDays)
-        .frame(width: 170, height: 100)
+      CalendarView(
+        calorieDays: $combinedArray,
+        eventDays: $eventDays
+      )
+      .frame(width: 170, height: 100)
       Spacer()
       Button("Sync") {
         Task {
@@ -55,18 +65,20 @@ struct ContentView: View {
     }
   }
 }
+
+/// Merges two boolean arrays (OR operation).
 func orBooleanArrays(_ array1: [Bool], _ array2: [Bool]) -> [Bool] {
   let maxLength = max(array1.count, array2.count)
-
   var resultArray: [Bool] = []
+
   for i in 0..<maxLength {
     let value1 = i < array1.count ? array1[i] : false
     let value2 = i < array2.count ? array2[i] : false
     resultArray.append(value1 || value2)
   }
-
   return resultArray
 }
+
 #Preview {
   ContentView()
 }

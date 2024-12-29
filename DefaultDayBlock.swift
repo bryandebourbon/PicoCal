@@ -11,12 +11,6 @@ struct DefaultDayBlock: View {
 
   // Need support fort inverted color mode
   var body: some View {
-
-
-
-
-
-
     VStack(spacing:0){
       ZStack{
         (isToday ? Color("todayIndicator"): Color.clear).clipShape(Ellipse()).padding(2).opacity(0.6)

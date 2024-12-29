@@ -25,34 +25,37 @@ struct Provider: TimelineProvider {
 
   func getTimeline(in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> Void) {
     fetchSharedData { entry in
-
       let nextUpdateDate = Calendar.current.date(byAdding: .minute, value: 10, to: entry.date)!
-
-      let timeline = Timeline(
-        entries: [entry],
-        policy: .after(nextUpdateDate)
-      )
-
+      let timeline = Timeline(entries: [entry], policy: .after(nextUpdateDate))
       completion(timeline)
     }
   }
 
+  /// Updated to call `initializeEventStore` asynchronously, then return the result via a completion handler.
   func fetchSharedData(completion: @escaping (SimpleEntry) -> Void) {
     let flags = Store.shared.retrieve(forKey: "sharedFlags")
     let eventKitFetcher = EventKitFetcher.shared
 
-    eventKitFetcher.initializeEventStore { granted, busyDays, error in
-      let entry: SimpleEntry
-      if granted, let busyDays = busyDays {
-        entry = SimpleEntry(date: Date(), flags: flags, eventDays: busyDays)
-      } else {
-        entry = SimpleEntry(
+    // Bridge the async call to a callback completion
+    Task {
+      do {
+        // `initializeEventStore()` is now async; we await its result
+        let busyDays = try await eventKitFetcher.initializeEventStore()
+        let entry = SimpleEntry(
+          date: Date(),
+          flags: flags,
+          eventDays: busyDays
+        )
+        completion(entry)
+      } catch {
+        // If there's an error or permission not granted, return a fallback entry
+        let entry = SimpleEntry(
           date: Date(),
           flags: flags,
           eventDays: (1...30).map { _ in (morning: false, afternoon: false, evening: false) }
         )
+        completion(entry)
       }
-      completion(entry)
     }
   }
 }
@@ -70,19 +73,20 @@ struct WidgetExtensionEntryView: View {
     VStack {
       CalendarDateTitle()
         .frame(height: 1)
+
       CalendarView(
         calorieDays: .constant(entry.flags),
         eventDays: .constant(entry.eventDays)
-      ).offset(x:-6)
-
-    }.frame(width: 180, height: 56)
-      .offset(y:-8 )
+      )
+      .offset(x: -6)
+    }
+    .frame(width: 180, height: 56)
+    .offset(y: -8)
     .containerBackground(for: .widget) {
       Color.black
     }
-    }
   }
-
+}
 
 struct WidgetExtension: Widget {
   var body: some WidgetConfiguration {
@@ -93,4 +97,3 @@ struct WidgetExtension: Widget {
     .description("A Calendar for tiny spaces.")
   }
 }
-

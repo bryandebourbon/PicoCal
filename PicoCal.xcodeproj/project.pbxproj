@@ -3,10 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E110E2A2D2198CC00A7425A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E5238812B49BC63008988E0 /* WidgetKit.framework */; };
+		2E110E2B2D2198CC00A7425A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E5238832B49BC64008988E0 /* SwiftUI.framework */; };
+		2E110E392D2198CD00A7425A /* HomeWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 2E110E292D2198CC00A7425A /* HomeWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2E245BAA2BB8EA3300797BDE /* EventKitInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E66F5952B462A1A007AFEE7 /* EventKitInfo.swift */; };
 		2E245BAD2BBA45BB00797BDE /* WatchToPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E245BAC2BBA45BB00797BDE /* WatchToPhone.swift */; };
 		2E2D44922BB8E59C00CE74C7 /* PhoneToWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2D44912BB8E59C00CE74C7 /* PhoneToWatch.swift */; };
@@ -42,15 +45,19 @@
 		2ED6C2FB2B4A34E2002425B9 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E66F5912B4627EA007AFEE7 /* CalendarView.swift */; };
 		2ED6C3092B4A3500002425B9 /* EventKitInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E66F5952B462A1A007AFEE7 /* EventKitInfo.swift */; };
 		2ED6C30A2B4A3501002425B9 /* EventKitInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E66F5952B462A1A007AFEE7 /* EventKitInfo.swift */; };
-		2EF5F4972BF3BE0A0098DF59 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF5F4962BF3BE0A0098DF59 /* Constants.swift */; };
-		2EF5F4982BF3BE3F0098DF59 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF5F4962BF3BE0A0098DF59 /* Constants.swift */; };
-		2EF5F4992BF3BE420098DF59 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF5F4962BF3BE0A0098DF59 /* Constants.swift */; };
 		2EFA15DE2B7A8D7E00F34B25 /* Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFA15DD2B7A8D7E00F34B25 /* Health.swift */; };
 		2EFA15DF2B7A8D7E00F34B25 /* Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFA15DD2B7A8D7E00F34B25 /* Health.swift */; };
 		2EFA15E02B7A8D7E00F34B25 /* Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFA15DD2B7A8D7E00F34B25 /* Health.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2E110E372D2198CD00A7425A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2E3721FD2B45F685003C4B66 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2E110E282D2198CC00A7425A;
+			remoteInfo = HomeWidgetExtension;
+		};
 		2ED6C2D02B4A3033002425B9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2E3721FD2B45F685003C4B66 /* Project object */;
@@ -68,6 +75,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		2E110E3A2D2198CD00A7425A /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				2E110E392D2198CD00A7425A /* HomeWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2ED6C2DF2B4A3034002425B9 /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -93,6 +111,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2E110E292D2198CC00A7425A /* HomeWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HomeWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E245BAC2BBA45BB00797BDE /* WatchToPhone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchToPhone.swift; sourceTree = "<group>"; };
 		2E2D44912BB8E59C00CE74C7 /* PhoneToWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneToWatch.swift; sourceTree = "<group>"; };
 		2E5238742B479A04008988E0 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; path = README; sourceTree = SOURCE_ROOT; };
@@ -104,7 +123,7 @@
 		2E6754482B7AF9EF00C6619C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E7238872B4B7D51002CD589 /* Assests.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assests.xcassets; sourceTree = "<group>"; };
 		2E8285A92BCB457600D5E9E6 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Background.swift; path = WatchKitWidget/Background.swift; sourceTree = "<group>"; };
-		2E8285AC2BCB47D300D5E9E6 /* PicoCaliOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "PicoCaliOS-Info.plist"; sourceTree = "<group>"; };
+		2E8285AC2BCB47D300D5E9E6 /* PicoCaliOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PicoCaliOS-Info.plist"; sourceTree = "<group>"; };
 		2E9ADFD12BFBD89300F4D346 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		2EB643E22B79D89900134110 /* PicoCaliOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PicoCaliOS.entitlements; sourceTree = "<group>"; };
 		2EB643E32B79D8A600134110 /* PicoCalWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PicoCalWatch.entitlements; sourceTree = "<group>"; };
@@ -122,11 +141,33 @@
 		2ED6C2E72B4A30FF002425B9 /* PicoCalWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PicoCalWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		2ED6C2EB2B4A3100002425B9 /* WatchKitWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchKitWidget.swift; sourceTree = "<group>"; };
 		2ED6C2EF2B4A3102002425B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		2EF5F4962BF3BE0A0098DF59 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2EFA15DD2B7A8D7E00F34B25 /* Health.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Health.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		2E110E3D2D2198CD00A7425A /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 2E110E282D2198CC00A7425A /* HomeWidgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		2E110E2C2D2198CC00A7425A /* HomeWidget */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (2E110E3D2D2198CD00A7425A /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = HomeWidget; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
+		2E110E262D2198CC00A7425A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E110E2B2D2198CC00A7425A /* SwiftUI.framework in Frameworks */,
+				2E110E2A2D2198CC00A7425A /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2ED6C2BC2B4A3030002425B9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -156,7 +197,6 @@
 		2E3721FC2B45F685003C4B66 = {
 			isa = PBXGroup;
 			children = (
-				2EF5F4962BF3BE0A0098DF59 /* Constants.swift */,
 				2E8285AC2BCB47D300D5E9E6 /* PicoCaliOS-Info.plist */,
 				2EB643E22B79D89900134110 /* PicoCaliOS.entitlements */,
 				2EB643E32B79D8A600134110 /* PicoCalWatch.entitlements */,
@@ -166,14 +206,15 @@
 				2E8285A92BCB457600D5E9E6 /* Background.swift */,
 				2EB643E92B79DE9500134110 /* Store.swift */,
 				2EFA15DD2B7A8D7E00F34B25 /* Health.swift */,
+				2E66F5952B462A1A007AFEE7 /* EventKitInfo.swift */,
 				2E2D44912BB8E59C00CE74C7 /* PhoneToWatch.swift */,
 				2E245BAC2BBA45BB00797BDE /* WatchToPhone.swift */,
 				2ECD847A2B8A3309001D811C /* WrapGridView.swift */,
 				2E66F5912B4627EA007AFEE7 /* CalendarView.swift */,
-				2E66F5952B462A1A007AFEE7 /* EventKitInfo.swift */,
 				2ECD847E2B8D68BF001D811C /* CalendarDateTitle.swift */,
 				2ECD84762B8994F8001D811C /* DefaultDayBlock.swift */,
 				2ED6C2C02B4A3030002425B9 /* iOSApp */,
+				2E110E2C2D2198CC00A7425A /* HomeWidget */,
 				2ED6C2D22B4A3033002425B9 /* WatchKitApp */,
 				2ED6C2EA2B4A30FF002425B9 /* WatchKitWidget */,
 				2E5238802B49BC63008988E0 /* Frameworks */,
@@ -188,6 +229,7 @@
 				2ED6C2BF2B4A3030002425B9 /* PicoCaliOS.app */,
 				2ED6C2CE2B4A3033002425B9 /* PicoCalWatch.app */,
 				2ED6C2E72B4A30FF002425B9 /* PicoCalWidget.appex */,
+				2E110E292D2198CC00A7425A /* HomeWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -233,6 +275,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2E110E282D2198CC00A7425A /* HomeWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2E110E3E2D2198CD00A7425A /* Build configuration list for PBXNativeTarget "HomeWidgetExtension" */;
+			buildPhases = (
+				2E110E252D2198CC00A7425A /* Sources */,
+				2E110E262D2198CC00A7425A /* Frameworks */,
+				2E110E272D2198CC00A7425A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				2E110E2C2D2198CC00A7425A /* HomeWidget */,
+			);
+			name = HomeWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = HomeWidgetExtension;
+			productReference = 2E110E292D2198CC00A7425A /* HomeWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		2ED6C2BE2B4A3030002425B9 /* PicoCaliOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2ED6C2E02B4A3034002425B9 /* Build configuration list for PBXNativeTarget "PicoCaliOS" */;
@@ -241,11 +305,13 @@
 				2ED6C2BC2B4A3030002425B9 /* Frameworks */,
 				2ED6C2BD2B4A3030002425B9 /* Resources */,
 				2ED6C2DF2B4A3034002425B9 /* Embed Watch Content */,
+				2E110E3A2D2198CD00A7425A /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				2ED6C2D12B4A3033002425B9 /* PBXTargetDependency */,
+				2E110E382D2198CD00A7425A /* PBXTargetDependency */,
 			);
 			name = PicoCaliOS;
 			productName = CalendariOS;
@@ -295,9 +361,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1500;
+				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1520;
 				TargetAttributes = {
+					2E110E282D2198CC00A7425A = {
+						CreatedOnToolsVersion = 16.2;
+					};
 					2ED6C2BE2B4A3030002425B9 = {
 						CreatedOnToolsVersion = 15.0.1;
 					};
@@ -325,11 +394,19 @@
 				2ED6C2BE2B4A3030002425B9 /* PicoCaliOS */,
 				2ED6C2CD2B4A3033002425B9 /* PicoCalWatch */,
 				2ED6C2E62B4A30FF002425B9 /* PicoCalWidget */,
+				2E110E282D2198CC00A7425A /* HomeWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2E110E272D2198CC00A7425A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2ED6C2BD2B4A3030002425B9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -360,12 +437,18 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2E110E252D2198CC00A7425A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2ED6C2BB2B4A3030002425B9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				2EB643EA2B79DE9500134110 /* Store.swift in Sources */,
-				2EF5F4972BF3BE0A0098DF59 /* Constants.swift in Sources */,
 				2E2D44922BB8E59C00CE74C7 /* PhoneToWatch.swift in Sources */,
 				2EFA15DE2B7A8D7E00F34B25 /* Health.swift in Sources */,
 				2ED6C3092B4A3500002425B9 /* EventKitInfo.swift in Sources */,
@@ -387,7 +470,6 @@
 				2ECD84802B8D68BF001D811C /* CalendarDateTitle.swift in Sources */,
 				2ED6C30A2B4A3501002425B9 /* EventKitInfo.swift in Sources */,
 				2E245BAD2BBA45BB00797BDE /* WatchToPhone.swift in Sources */,
-				2EF5F4982BF3BE3F0098DF59 /* Constants.swift in Sources */,
 				2ED6C2FA2B4A34E1002425B9 /* CalendarView.swift in Sources */,
 				2E9ADFD22BFBD89300F4D346 /* ContentViewModel.swift in Sources */,
 				2ED6C2D42B4A3033002425B9 /* WatchKitApp.swift in Sources */,
@@ -408,13 +490,17 @@
 				2ED6C2EC2B4A3100002425B9 /* WatchKitWidget.swift in Sources */,
 				2ECD84792B8994F8001D811C /* DefaultDayBlock.swift in Sources */,
 				2ECD847D2B8A3309001D811C /* WrapGridView.swift in Sources */,
-				2EF5F4992BF3BE420098DF59 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		2E110E382D2198CD00A7425A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2E110E282D2198CC00A7425A /* HomeWidgetExtension */;
+			targetProxy = 2E110E372D2198CD00A7425A /* PBXContainerItemProxy */;
+		};
 		2ED6C2D12B4A3033002425B9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2ED6C2CD2B4A3033002425B9 /* PicoCalWatch */;
@@ -428,6 +514,84 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		2E110E3B2D2198CD00A7425A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = HomeWidget/HomeWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VZPMV36P9L;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HomeWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HomeWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bryandebourbon.Calendar.iOSApp.HomeWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Debug;
+		};
+		2E110E3C2D2198CD00A7425A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = HomeWidget/HomeWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VZPMV36P9L;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HomeWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HomeWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bryandebourbon.Calendar.iOSApp.HomeWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Release;
+		};
 		2E3722122B45F687003C4B66 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -766,6 +930,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2E110E3E2D2198CD00A7425A /* Build configuration list for PBXNativeTarget "HomeWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2E110E3B2D2198CD00A7425A /* Debug */,
+				2E110E3C2D2198CD00A7425A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2E3722002B45F685003C4B66 /* Build configuration list for PBXProject "PicoCal" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -22,7 +22,7 @@ struct OnboardingView: View {
                 .padding(.top)
             
             // TODO: BETTER EXPLAIN that calories cause the calendar day to change color! and also alter wording for app in appstore connect
-            Text("We’d like to access your Health data to track your daily calories. We’ll only use it to help you stay active.")
+            Text("We need access to your Health data to track your daily calories. Once you burn more than 500 calories, the current day on your calendar will change color to show you’ve hit your goal.")
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
             
@@ -54,7 +54,7 @@ struct OnboardingView: View {
         .padding()
         .task {
             // Check the existing HealthKit authorization status on appear
-            await checkInitialAuthorizationStatus()
+//            await checkInitialAuthorizationStatus()
         }
     }
 }
@@ -74,10 +74,10 @@ extension OnboardingView {
 //            errorMessage = "Invalid quantity type for activeEnergyBurned."
 //            return
 //        }
-        do {try await Health.shared.requestHealthKitAuthorization()
-        }catch {
-            print("Error requesting authorization:")
-        }
+//        do {try await Health.shared.requestHealthKitAuthorization()
+//        }catch {
+//            print("Error requesting authorization:")
+//        }
 //        let status = health.healthStore.authorizationStatus(for: calorieType)
 //        switch status {
 //        case .sharingAuthorized:

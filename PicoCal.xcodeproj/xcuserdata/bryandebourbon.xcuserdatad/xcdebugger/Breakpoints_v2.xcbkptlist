@@ -40,7 +40,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "9E10F5D6-01FC-4FDA-B253-DCC68B374C8E"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Health.swift"
@@ -50,13 +50,85 @@
             endingLineNumber = "75"
             landmarkName = "fetchCaloriesByMonth()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9E10F5D6-01FC-4FDA-B253-DCC68B374C8E - b833deb7e4124d1c"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for PicoCaliOS.Health.fetchCaloriesByMonth() async throws -&gt; Swift.Array&lt;Swift.Bool&gt;"
+                  moduleName = "PicoCaliOS.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bryandebourbon/PicoCal/Health.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "79"
+                  endingLineNumber = "79">
+               </Location>
+               <Location
+                  uuid = "9E10F5D6-01FC-4FDA-B253-DCC68B374C8E - f41afe209d231700"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for PicoCaliOS.Health.fetchCaloriesByMonth() async throws -&gt; Swift.Array&lt;Swift.Bool&gt;"
+                  moduleName = "PicoCaliOS.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bryandebourbon/PicoCal/Health.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "79"
+                  endingLineNumber = "79">
+               </Location>
+               <Location
+                  uuid = "9E10F5D6-01FC-4FDA-B253-DCC68B374C8E - c56bdd689f8891e"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for PicoCaliOS.Health.fetchCaloriesByMonth() async throws -&gt; Swift.Array&lt;Swift.Bool&gt;"
+                  moduleName = "PicoCaliOS.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bryandebourbon/PicoCal/Health.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "79"
+                  endingLineNumber = "79">
+               </Location>
+               <Location
+                  uuid = "9E10F5D6-01FC-4FDA-B253-DCC68B374C8E - 7d2bf1997fb36651"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(6) suspend resume partial function for PicoCaliOS.Health.fetchCaloriesByMonth() async throws -&gt; Swift.Array&lt;Swift.Bool&gt;"
+                  moduleName = "PicoCaliOS.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bryandebourbon/PicoCal/Health.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69">
+               </Location>
+               <Location
+                  uuid = "9E10F5D6-01FC-4FDA-B253-DCC68B374C8E - 7d2bf1997fb3671b"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(6) suspend resume partial function for PicoCaliOS.Health.fetchCaloriesByMonth() async throws -&gt; Swift.Array&lt;Swift.Bool&gt;"
+                  moduleName = "PicoCaliOS.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bryandebourbon/PicoCal/Health.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "79"
+                  endingLineNumber = "79">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "6A158888-8741-4761-8B4F-403045A5ADDE"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Health.swift"
@@ -72,7 +144,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "C6A93BF3-6BE1-4616-A9EB-622057912BC6"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Health.swift"
@@ -88,7 +160,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "6369AC31-B84D-48F3-82CA-11E783F3CD86"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Health.swift"
@@ -96,6 +168,22 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
             endingLineNumber = "53"
+            landmarkName = "requestHealthKitAuthorization()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C4C21845-1D4A-478C-8219-12A3B74E6DE6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Health.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
             landmarkName = "requestHealthKitAuthorization()"
             landmarkType = "7">
          </BreakpointContent>

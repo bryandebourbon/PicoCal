@@ -32,15 +32,26 @@ struct iOSContentView: View {
     @ObservedObject var vm: CentralViewModel
 
     var body: some View {
-        VStack {
-            CalendarView(viewModel: vm)
-
-            Button("Sync") {
-                Task {
-                    await vm.refresh()
-                    WidgetCenter.shared.reloadAllTimelines()
+        ZStack{
+            VStack {
+                CalendarView(viewModel: vm)
+                
+                Button("Sync") {
+                    Task {
+                        await vm.refresh()
+                        WidgetCenter.shared.reloadAllTimelines()
+                    }
                 }
             }
+                if vm.showSyncCompletedPopup {
+                    SyncCompletedToast {
+                        // onHide callback:
+                        vm.showSyncCompletedPopup = false
+                    }
+                    .transition(.identity)  // We'll rely on the offset animation
+                    // If you do want a fade or another transition, feel free to replace .identity
+                }
+            
         }
     }
 }

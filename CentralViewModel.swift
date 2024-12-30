@@ -5,8 +5,9 @@ import Combine
 final class CentralViewModel: ObservableObject, CalendarViewProviding {
   @Published var healthFlags: [Bool] = []
   @Published var busyDays: [(Bool, Bool, Bool)] = []
-
+    @Published var showSyncCompletedPopup = false
   private let dataManager = DataManager.shared
+    
 
   // MARK: - Refresh
   func refresh() async {
@@ -15,6 +16,7 @@ final class CentralViewModel: ObservableObject, CalendarViewProviding {
     #else
     await refreshForPhone()
     #endif
+      showSyncCompletedPopup = true
   }
 
   // MARK: - Common code for both platforms

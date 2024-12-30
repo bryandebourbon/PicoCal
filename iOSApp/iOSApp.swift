@@ -35,8 +35,8 @@ struct iOSContentView: View {
         VStack {
             CalendarDateTitle()
             CalendarView(viewModel: vm)
-                .frame(width: 170, height: 100)
-                .padding()
+//                .frame(width: 170, height: 100)
+//                .padding()
 
             Button("Sync") {
                 Task {

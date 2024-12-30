@@ -94,10 +94,10 @@ struct WatchWidgetExtensionEntryView: View {
         healthFlags: entry.flags,
         busyDays: entry.eventDays
       )
-      .offset(x: -6)
+//      .offset(x: -6)
     }
-    .frame(width: 180, height: 56)
-    .offset(y: -8)
+//    .frame(width: 180, height: 56)
+//    .offset(y: -8)
     .containerBackground(for: .widget) {
       Color.black
     }

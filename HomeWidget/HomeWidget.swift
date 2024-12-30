@@ -73,7 +73,7 @@ struct iOSWidgetExtensionEntryView: View {
     @Environment(\.widgetFamily) var family
     
     var body: some View {
-        VStack(spacing: 8) {
+        VStack(spacing: 0) {
           
             CalendarDateTitle()
 

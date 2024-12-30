@@ -26,7 +26,7 @@ final class Health {
     /// Request authorization to read from HealthKit.
     /// If not available or the user denies permission, this call will throw an error.
     @MainActor
-    private func requestHealthKitAuthorization() async throws {
+    func requestHealthKitAuthorization() async throws {
         guard HKHealthStore.isHealthDataAvailable() else {
             print("[Health] HealthKit is not available on this device.")
             throw HealthKitError.notAvailable

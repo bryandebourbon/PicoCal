@@ -73,24 +73,27 @@ extension OnboardingView {
             errorMessage = "Invalid quantity type for activeEnergyBurned."
             return
         }
-        
-        let status = health.healthStore.authorizationStatus(for: calorieType)
-        switch status {
-        case .sharingAuthorized:
-            // Already authorized, so skip the request entirely.
-            hasCompletedOnboarding = true
-            
-        case .sharingDenied:
-            // The user denied in the past. Show a message and allow them to open Settings.
-            errorMessage = "User Denied"
-            
-        case .notDetermined:
-            // Not determined yet. Wait for the user to tap "Next."
-            break
-            
-        @unknown default:
-            errorMessage = "Unknown authorization status."
+        do {try await Health.shared.requestHealthKitAuthorization()
+        }catch {
+            print("Error requesting authorization:")
         }
+//        let status = health.healthStore.authorizationStatus(for: calorieType)
+//        switch status {
+//        case .sharingAuthorized:
+//            // Already authorized, so skip the request entirely.
+//            hasCompletedOnboarding = true
+//            
+//        case .sharingDenied:
+//            // The user denied in the past. Show a message and allow them to open Settings.
+//            errorMessage = "User Denied"
+//            
+//        case .notDetermined:
+//            // Not determined yet. Wait for the user to tap "Next."
+//            break
+//            
+//        @unknown default:
+//            errorMessage = "Unknown authorization status."
+//        }
     }
     
     /// Handles the actual permission request when user taps "Next."

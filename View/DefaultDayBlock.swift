@@ -8,6 +8,9 @@ struct DefaultDayBlock: View {
   let isBusyMorning: Bool
   let isBusyAfternoon: Bool
   let isBusyEvening: Bool
+    
+let DATE_TITLE_HEIGHT: CGFloat = 11
+    let WatchWidgetBusyHeight: CGFloat = 2
 
   // Need support fort inverted color mode
   var body: some View {
@@ -16,16 +19,17 @@ struct DefaultDayBlock: View {
         (isToday ? Color("todayIndicator"): Color.clear).clipShape(Ellipse()).padding(2).opacity(0.6)
         Text("\(dayOfMonth)")
           .bold()
-          .font(.system(size: 11))
+          .font(.system(size: DATE_TITLE_HEIGHT))
           .foregroundColor(Color("fontColor"))
-      }.offset(y:3)
+      }.frame(height: DATE_TITLE_HEIGHT - WatchWidgetBusyHeight)
 
       HStack(spacing:0)
       {
       isBusyMorning ? Color("busy") : Color.clear
       isBusyAfternoon ? Color("busy") : Color.clear
       isBusyEvening ? Color("busy") : Color.clear
-      }.frame(height: 6)
+      }
+     
     }
 
 

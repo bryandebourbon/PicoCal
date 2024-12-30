@@ -24,6 +24,7 @@
 		2E110E582D21F4CD00A7425A /* CalendarDateTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD847E2B8D68BF001D811C /* CalendarDateTitle.swift */; };
 		2E110E592D21F4D100A7425A /* DefaultDayBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD84762B8994F8001D811C /* DefaultDayBlock.swift */; };
 		2E110E5A2D21FC5200A7425A /* Assests.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E7238872B4B7D51002CD589 /* Assests.xcassets */; };
+		2E110E5C2D2227E000A7425A /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E110E5B2D2227DB00A7425A /* OnboardingView.swift */; };
 		2E245BAA2BB8EA3300797BDE /* EventKitInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E66F5952B462A1A007AFEE7 /* EventKitInfo.swift */; };
 		2E245BAD2BBA45BB00797BDE /* WatchToPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E245BAC2BBA45BB00797BDE /* WatchToPhone.swift */; };
 		2E2D44922BB8E59C00CE74C7 /* PhoneToWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2D44912BB8E59C00CE74C7 /* PhoneToWatch.swift */; };
@@ -127,6 +128,7 @@
 		2E110E292D2198CC00A7425A /* HomeWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HomeWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E110E432D21D3F800A7425A /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		2E110E472D21D52900A7425A /* CentralViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralViewModel.swift; sourceTree = "<group>"; };
+		2E110E5B2D2227DB00A7425A /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		2E245BAC2BBA45BB00797BDE /* WatchToPhone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchToPhone.swift; sourceTree = "<group>"; };
 		2E2D44912BB8E59C00CE74C7 /* PhoneToWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneToWatch.swift; sourceTree = "<group>"; };
 		2E5238742B479A04008988E0 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; path = README; sourceTree = SOURCE_ROOT; };
@@ -286,6 +288,7 @@
 		2ED6C2C02B4A3030002425B9 /* iOSApp */ = {
 			isa = PBXGroup;
 			children = (
+				2E110E5B2D2227DB00A7425A /* OnboardingView.swift */,
 				2ED6C2C52B4A3033002425B9 /* Assets.xcassets */,
 				2ED6C2C12B4A3030002425B9 /* iOSApp.swift */,
 			);
@@ -507,6 +510,7 @@
 				2E110E462D21D40800A7425A /* DataManager.swift in Sources */,
 				2ECD847B2B8A3309001D811C /* WrapGridView.swift in Sources */,
 				2E110E4A2D21D52C00A7425A /* CentralViewModel.swift in Sources */,
+				2E110E5C2D2227E000A7425A /* OnboardingView.swift in Sources */,
 				2ECD84772B8994F8001D811C /* DefaultDayBlock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

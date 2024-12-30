@@ -16,22 +16,16 @@ class Health {
   private(set) var caloriesByMonth: [Bool] = []
 
   init() {
-    // You can remove the call in `init` if you'd prefer to request authorization
-    // at a user-driven moment instead of automatically on init.
-    // Example:
-    // Task {
-    //   do {
-    //     try await requestHealthKitAuthorization()
-    //   } catch {
-    //     print("[Health] Failed to request HK authorization: \(error)")
-    //   }
-    // }
+    // Remove the call to request authorization here.
+    // If you prefer a user-driven approach, you can still keep the call
+    // in a button action or some other place. But we won't request
+    // in `init` to ensure we only do so when data is actually requested.
   }
   
   /// Request authorization to read from HealthKit.
   /// If not available or the user denies permission, this call will throw an error.
   @MainActor
-  func requestHealthKitAuthorization() async throws {
+  private func requestHealthKitAuthorization() async throws {
     guard HKHealthStore.isHealthDataAvailable() else {
       print("[Health] HealthKit is not available on this device.")
       throw HealthKitError.notAvailable
@@ -65,11 +59,39 @@ class Health {
   /// Fetch active energy (calories) for the current month.
   /// Returns an array of Bools. Each Bool indicates whether that day’s calories > 500.
   func fetchCaloriesByMonth() async throws -> [Bool] {
+    // First, make sure HealthKit is available on this device.
+    guard HKHealthStore.isHealthDataAvailable() else {
+      print("[Health] HealthKit is not available on this device.")
+      throw HealthKitError.notAvailable
+    }
+    
+    // Make sure we can read the .activeEnergyBurned type.
     guard let calorieType = HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned) else {
-      print("[Health] Could not create HKQuantityType for .activeEnergyBurned.")
+      print("[Health] Invalid quantity type for activeEnergyBurned.")
       throw HealthKitError.invalidQuantityType
     }
 
+    // Check current authorization status for this type.
+    let status = healthStore.authorizationStatus(for: calorieType)
+
+    switch status {
+      case .notDetermined:
+        // User has not yet responded – request permission now.
+        try await requestHealthKitAuthorization()
+      case .sharingDenied:
+        // User has already denied – throw an error (or handle gracefully).
+        print("[Health] User previously denied HealthKit permission.")
+        throw HealthKitError.authorizationFailed
+      case .sharingAuthorized:
+        // User has already granted permission; just continue.
+        break
+      @unknown default:
+        // Future-proof: handle any new/unknown cases.
+        throw HealthKitError.authorizationFailed
+    }
+
+    // Now that we are sure we have authorization (or we threw above), fetch data.
+    
     let calendar = Calendar.current
     let now = Date()
 
@@ -102,7 +124,7 @@ class Health {
       intervalComponents: DateComponents(day: 1)
     )
     
-      let dailyFlags:[Bool] = try await withCheckedThrowingContinuation { continuation in
+    let dailyFlags: [Bool] = try await withCheckedThrowingContinuation { continuation in
       query.initialResultsHandler = { _, results, error in
         if let error = error {
           print("[Health] Error while fetching statistics: \(error.localizedDescription)")

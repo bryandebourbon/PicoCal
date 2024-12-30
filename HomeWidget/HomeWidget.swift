@@ -1,11 +1,3 @@
-//
-//  iOSWidgetExtension.swift
-//  YourAppOrExtensionName
-//
-//  A single-file example for creating an iPhone widget
-//  that shows your CalendarStaticView in appropriate sizes.
-//
-
 import SwiftUI
 import WidgetKit
 import EventKit

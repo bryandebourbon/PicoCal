@@ -1,7 +1,4 @@
-import EventKit
-import HealthKit
 import SwiftUI
-import WidgetKit
 
 @main
 struct WatchKitApp: App {
@@ -25,7 +22,6 @@ struct WatchContentView: View {
     }
   }
 }
-
 
 #Preview {
     WatchContentView()

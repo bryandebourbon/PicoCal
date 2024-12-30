@@ -78,6 +78,8 @@ extension CentralViewModel {
       } catch {
         print("Phone → Watch error sending data: \(error)")
       }
+        // 3) Persist if needed
+        dataManager.store.persist(data: self.healthFlags, forKey: "sharedFlags")
 
       // 4) Build busy days
       buildBusyDays()

@@ -85,8 +85,8 @@ struct WatchWidgetExtensionEntryView: View {
   
   var body: some View {
     VStack {
-      CalendarDateTitle()
-        .frame(height: 1)
+//      CalendarDateTitle()
+//        .frame(height: 1)
       
       //  We can’t use the `CalendarView<T: CalendarViewProviding>` directly,
       //  because a Widget can’t hold an @ObservedObject. Instead, pass static data:

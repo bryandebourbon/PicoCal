@@ -1,4 +1,5 @@
 import SwiftUI
+import WidgetKit
 
 @main
 struct WatchKitApp: App {
@@ -15,9 +16,13 @@ struct WatchContentView: View {
   @StateObject var viewModel = CentralViewModel()
   var body: some View {
     VStack {
+//      CalendarDateTitle()
       CalendarView(viewModel: viewModel)
       Button("Sync") {
-        Task { await viewModel.refresh() }
+          Task {
+              await viewModel.refresh()
+              WidgetCenter.shared.reloadAllTimelines()
+          }
       }
     }
   }

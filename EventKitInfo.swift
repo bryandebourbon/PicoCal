@@ -1,4 +1,6 @@
 import EventKit
+import UIKit
+import SwiftUICore
 import Foundation
 
 /// Custom error for EventKit scenarios.
@@ -283,3 +285,12 @@ extension Calendar {
   }
 }
 
+extension EventWrapper {
+  var calendarcolor: Color {
+
+    // Convert the CGColor to a UIColor, then to SwiftUI Color
+    let uiColor = UIColor(cgColor: ekEvent.calendar.cgColor)
+    return Color(uiColor)
+
+  }
+}

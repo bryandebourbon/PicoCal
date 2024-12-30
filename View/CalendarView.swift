@@ -32,10 +32,15 @@ struct CalendarStaticView: View {
   let defaultView = AnyView(Color.clear)
 
   var body: some View {
-    WrapGridView(
-      items: fullMonthContent(),
-      numberOfColumns: numberOfColumns
-    )
+      // TODO: Handle 6-row-months: months that start on thurs/fri with 30/31 days!
+      // in this case put CalendarDateTitle left justified in the same row as the first week of the 6-row-months
+      VStack(spacing: 0){
+          CalendarDateTitle()
+          WrapGridView(
+            items: fullMonthContent(),
+            numberOfColumns: numberOfColumns
+          )
+      }
   }
 
   private func fullMonthContent() -> [AnyView] {

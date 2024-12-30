@@ -9,8 +9,8 @@ struct DefaultDayBlock: View {
   let isBusyAfternoon: Bool
   let isBusyEvening: Bool
     
-let DATE_TITLE_HEIGHT: CGFloat = 11
-    let WatchWidgetBusyHeight: CGFloat = 2
+  let DATE_TITLE_HEIGHT: CGFloat = 11
+  let WATCH_WIDGET_BUSY_BAR_HEIGHT: CGFloat = 4
 
   // Need support fort inverted color mode
   var body: some View {
@@ -21,19 +21,16 @@ let DATE_TITLE_HEIGHT: CGFloat = 11
           .bold()
           .font(.system(size: DATE_TITLE_HEIGHT))
           .foregroundColor(Color("fontColor"))
-      }.frame(height: DATE_TITLE_HEIGHT - WatchWidgetBusyHeight)
+      }.frame(height: DATE_TITLE_HEIGHT - WATCH_WIDGET_BUSY_BAR_HEIGHT)
 
-      HStack(spacing:0)
-      {
-      isBusyMorning ? Color("busy") : Color.clear
-      isBusyAfternoon ? Color("busy") : Color.clear
-      isBusyEvening ? Color("busy") : Color.clear
-      }
+        EventPlot(
+            dayOfMonth:dayOfMonth,
+            isBusyMorning: isBusyMorning,
+            isBusyAfternoon: isBusyAfternoon,
+            isBusyEvening: isBusyEvening
+        ).frame(minHeight: WATCH_WIDGET_BUSY_BAR_HEIGHT)
      
     }
-
-
-
     .background((isComplete ? Color("goalComplete") : Color("default")).opacity(0.6))
   }
 }

@@ -75,7 +75,7 @@ struct iOSWidgetExtensionEntryView: View {
     var body: some View {
         VStack(spacing: 0) {
           
-            CalendarDateTitle()
+//            CalendarDateTitle()
 
             CalendarStaticView(healthFlags: entry.flags, busyDays: entry.eventDays)
                 

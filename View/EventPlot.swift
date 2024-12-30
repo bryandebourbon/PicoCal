@@ -24,7 +24,7 @@ struct EventPlot: View {
                     }
 
                 } else {
-                    VStack(spacing: 0) {
+                    VStack(alignment: .leading, spacing: 0) {
                         ForEach(events) { event in
                             HStack(spacing: 0){
                                 Rectangle()

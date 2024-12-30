@@ -10,7 +10,7 @@ struct DefaultDayBlock: View {
   let isBusyEvening: Bool
     
   let DATE_TITLE_HEIGHT: CGFloat = 11
-  let WATCH_WIDGET_BUSY_BAR_HEIGHT: CGFloat = 4
+  let WATCH_WIDGET_BUSY_BAR_HEIGHT: CGFloat = 2
 
   // Need support fort inverted color mode
   var body: some View {

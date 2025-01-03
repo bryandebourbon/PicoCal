@@ -108,3 +108,19 @@ func session(_ session: WCSession,
 enum WCSessionError: Error {
   case notReachable
 }
+//
+//extension PhoneToWatch {
+//    func session(_ session: WCSession, didReceiveMessage message: [String: Any], replyHandler: @escaping ([String: Any]) -> Void) {
+//        if message["request"] as? String == "healthData" {
+//            Task {
+//                do {
+//                    let healthData = DataManager.shared.store.local
+//                    replyHandler(["healthData": healthData])
+//                } catch {
+//                    print("[Phone] Failed to fetch health data: \(error)")
+//                    replyHandler(["error": "Failed to fetch health data"])
+//                }
+//            }
+//        }
+//    }
+//}

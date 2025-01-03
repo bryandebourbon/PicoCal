@@ -14,7 +14,7 @@ struct WrapGridView: View {
   var body: some View {
     GeometryReader { geometry in
         let blockWidth = (geometry.size.width - SPACING*CGFloat(numberOfColumns)) / CGFloat(numberOfColumns)
-      let blockHeight = (geometry.size.height - SPACING*CGFloat(numberOfRows)) / CGFloat(numberOfRows)
+      let blockHeight = (geometry.size.height - SPACING*CGFloat(numberOfRows)) / CGFloat(numberOfRows) + 1
 
       VStack(alignment: .leading, spacing: SPACING) {
         ForEach(0..<numberOfRows, id: \.self) { rowIndex in
@@ -23,11 +23,11 @@ struct WrapGridView: View {
               let index = rowIndex * numberOfColumns + columnIndex
               if index < items.count {
                 items[index]
-                  .frame(width: blockWidth, height: blockHeight)
+                  .frame(minWidth: blockWidth, minHeight: blockHeight)
                   .cornerRadius(2)
               } else {
                 Spacer()
-                  .frame(width: blockWidth, height: blockHeight)
+                  .frame(minWidth: blockWidth, minHeight: blockHeight)
               }
             }
           }

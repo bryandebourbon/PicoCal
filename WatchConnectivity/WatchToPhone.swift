@@ -79,3 +79,36 @@ class WatchToPhone: NSObject, WCSessionDelegate, ObservableObject {
 enum WCSessionError: Error {
   case notReachable
 }
+
+//extension WatchToPhone {
+//    func requestHealthData() async throws -> [Bool] {
+//        try await withCheckedThrowingContinuation { continuation in
+//            WCSession.default.sendMessage(["request": "healthData"], replyHandler: { response in
+//                if let data = response["healthData"] as? [Bool] {
+//                    continuation.resume(returning: data)
+//                } else {
+//                    continuation.resume(throwing: NSError(domain: "HealthDataError", code: 0))
+//                }
+//            }, errorHandler: { error in
+//                continuation.resume(throwing: error)
+//            })
+//        }
+//    }
+//}
+//
+//
+//extension CentralViewModel {
+//    func syncHealthDataFromPhone() async {
+//        // Request health data from the phone
+//        do {
+//            let phoneHealthData = try await WatchToPhone.shared.requestHealthData()
+//            self.healthFlags = phoneHealthData
+//            print("[Watch] Synced health data from phone: \(phoneHealthData)")
+//        } catch {
+//            print("[Watch] Error syncing health data from phone: \(error)")
+//        }
+//    }
+//    
+//
+//
+//}

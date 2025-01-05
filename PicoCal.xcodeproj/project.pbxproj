@@ -615,6 +615,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 2.0;
+				OTHER_SWIFT_FLAGS = "-DWIDGET_TARGET";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bryandebourbon.Calendar.iOSApp.HomeWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -654,6 +655,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 2.0;
+				OTHER_SWIFT_FLAGS = "-DWIDGET_TARGET";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bryandebourbon.Calendar.iOSApp.HomeWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -958,6 +960,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MARKETING_VERSION = 2.0;
+				OTHER_SWIFT_FLAGS = "-DWIDGET_TARGET";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bryandebourbon.Calendar.iOSApp.WatchKitApp.WatchKitWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -989,6 +992,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MARKETING_VERSION = 2.0;
+				OTHER_SWIFT_FLAGS = "-DWIDGET_TARGET";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bryandebourbon.Calendar.iOSApp.WatchKitApp.WatchKitWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;

@@ -95,7 +95,7 @@ private func fullMonthContent() -> [AnyView] {
             }
         ).buttonStyle(.plain)
 
-#if canImport(WidgetKit)
+#if WIDGET_TARGET
         dayViews.append(AnyView(DefaultDayBlock(
             dayOfMonth: dayOfMonth,
             isToday: isToday,
@@ -108,7 +108,7 @@ private func fullMonthContent() -> [AnyView] {
     
 #else
     
-    dayViews.append(dayBlock)
+    dayViews.append(AnyView(dayBlock))
 #endif
     }
     

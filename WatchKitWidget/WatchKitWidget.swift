@@ -12,14 +12,15 @@ struct WatchWidgetExtensionBundle: WidgetBundle {
 }
 
 /// 1) A simple `TimelineEntry` that captures the data needed by the widget.
+/// We add `holidayDates` to hold the set of holiday days this month.
 struct WatchWidgetEntry: TimelineEntry {
   let date: Date
   let flags: [Bool]
   let eventDays: [(morning: Bool, afternoon: Bool, evening: Bool)]
+  let holidayDates: Set<Date>
 }
 
-/// 2) A `TimelineProvider` that fetches data from DataManager (or bridging calls),
-/// then hands off a `WatchWidgetEntry` to the Widget’s SwiftUI.
+/// 2) A `TimelineProvider` that fetches data, then hands off a `WatchWidgetEntry` to the widget’s SwiftUI.
 struct WatchWidgetProvider: TimelineProvider {
   func placeholder(in context: Context) -> WatchWidgetEntry {
     // Simple placeholder data
@@ -28,7 +29,8 @@ struct WatchWidgetProvider: TimelineProvider {
       flags: (1...30).map { _ in Bool.random() },
       eventDays: (1...30).map { _ in (morning: Bool.random(),
                                       afternoon: Bool.random(),
-                                      evening: Bool.random()) }
+                                      evening: Bool.random()) },
+      holidayDates: []  // No holiday data in the placeholder
     )
   }
 
@@ -53,16 +55,19 @@ struct WatchWidgetProvider: TimelineProvider {
   private func fetchDataForWidget(completion: @escaping (WatchWidgetEntry) -> Void) {
     let storeFlags = Store.shared.retrieve(forKey: "sharedFlags")
     
-    // If you want to fetch fresh EventKit data:
     Task {
       do {
-        // This calls your async method that fetches or re-initializes EventKit
+        // 3a) Fetch busyDays as before
         let busyDays = try await EventKitFetcher.shared.initializeEventStore()
+        
+        // 3b) Fetch holiday dates for the current month
+        let holidayDates = try await EventKitFetcher.shared.fetchHolidayDatesForCurrentMonth()
         
         let entry = WatchWidgetEntry(
           date: Date(),
           flags: storeFlags,
-          eventDays: busyDays
+          eventDays: busyDays,
+          holidayDates: holidayDates
         )
         completion(entry)
         
@@ -71,7 +76,8 @@ struct WatchWidgetProvider: TimelineProvider {
         let fallback = WatchWidgetEntry(
           date: Date(),
           flags: storeFlags,
-          eventDays: (1...30).map { _ in (false, false, false) }
+          eventDays: (1...30).map { _ in (false, false, false) },
+          holidayDates: []
         )
         completion(fallback)
       }
@@ -85,28 +91,21 @@ struct WatchWidgetExtensionEntryView: View {
   
   var body: some View {
     VStack {
-//      CalendarDateTitle()
-//        .frame(height: 1)
-      
-      //  We can’t use the `CalendarView<T: CalendarViewProviding>` directly,
-      //  because a Widget can’t hold an @ObservedObject. Instead, pass static data:
+      // We can’t use the `CalendarView<T: CalendarViewProviding>` directly
+      // because a Widget can’t hold an @ObservedObject. Instead, pass static data:
       CalendarStaticView(
         healthFlags: entry.flags,
-        busyDays: entry.eventDays
+        busyDays: entry.eventDays,
+        holidayDates: entry.holidayDates
       )
-//      .offset(x: -6)
     }
-//    .frame(width: 180, height: 56)
-//    .offset(y: -8)
     .containerBackground(for: .widget) {
       Color.black
     }
   }
 }
 
-
-
-/// 6) The widget configuration
+/// 5) The widget configuration
 struct WatchWidgetExtension: Widget {
   var body: some WidgetConfiguration {
     StaticConfiguration(

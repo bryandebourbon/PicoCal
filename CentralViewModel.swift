@@ -5,7 +5,8 @@ import Combine
 final class CentralViewModel: ObservableObject, CalendarViewProviding {
   @Published var healthFlags: [Bool] = []
   @Published var busyDays: [(Bool, Bool, Bool)] = []
-    @Published var showSyncCompletedPopup = false
+  @Published var showSyncCompletedPopup = false
+    @Published var holidayDates: Set<Date> = []
   private let dataManager = DataManager.shared
     
 
@@ -36,6 +37,16 @@ final class CentralViewModel: ObservableObject, CalendarViewProviding {
       range: dayRange
     )
   }
+    
+    private func buildHolidayDays() async {
+      do {
+        // Attempt to fetch holiday events
+        let fetchedHolidays = try await dataManager.eventKit.fetchHolidayDatesForCurrentMonth()
+        self.holidayDates = fetchedHolidays
+      } catch {
+        print("Failed to fetch holiday dates: \(error)")
+      }
+    }
 }
 
 // MARK: - WATCH-ONLY
@@ -58,6 +69,8 @@ extension CentralViewModel {
 
     // 4) Build busy days
     buildBusyDays()
+      
+      await buildHolidayDays()
   }
 }
 
@@ -86,17 +99,12 @@ extension CentralViewModel {
       // 4) Build busy days
       buildBusyDays()
 
+        await buildHolidayDays()
     }
   }
 }
 
 #endif
-
-// MARK: - CalendarViewProviding conformance
-extension CentralViewModel {
-  // These are required by the protocol
-  // (most likely used by your SwiftUI Views)
-}
 
 // MARK: - Helper
 func orBooleanArrays(_ array1: [Bool], _ array2: [Bool]) -> [Bool] {

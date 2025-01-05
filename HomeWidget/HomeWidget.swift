@@ -11,10 +11,14 @@ struct iOSWidgetExtensionBundle: WidgetBundle {
 }
 
 // MARK: - 2) Timeline Entry
+/// We add a `holidayDates` field to capture which days are holidays.
 struct iOSWidgetEntry: TimelineEntry {
   let date: Date
   let flags: [Bool]
   let eventDays: [(morning: Bool, afternoon: Bool, evening: Bool)]
+  
+  // NEW: The set of holiday dates in the current month
+  let holidayDates: Set<Date>
 }
 
 // MARK: - 3) Timeline Provider
@@ -25,7 +29,8 @@ struct iOSWidgetProvider: TimelineProvider {
       flags: (1...30).map { _ in Bool.random() },
       eventDays: (1...30).map { _ in
         (morning: Bool.random(), afternoon: Bool.random(), evening: Bool.random())
-      }
+      },
+      holidayDates: []
     )
   }
 
@@ -37,29 +42,41 @@ struct iOSWidgetProvider: TimelineProvider {
 
   func getTimeline(in context: Context, completion: @escaping (Timeline<iOSWidgetEntry>) -> Void) {
     fetchDataForWidget { entry in
+      // Update again in 10 minutes (or choose whatever interval you prefer)
       let nextUpdate = Calendar.current.date(byAdding: .minute, value: 10, to: entry.date) ?? Date()
       let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
       completion(timeline)
     }
   }
 
+  /// Fetch the data needed for this widget, including holiday dates.
   private func fetchDataForWidget(completion: @escaping (iOSWidgetEntry) -> Void) {
+    // Retrieve any local flags you have stored
     let storeFlags = Store.shared.retrieve(forKey: "sharedFlags")
 
     Task {
       do {
-        // This assumes your EventKitFetcher has an async method
-        // that returns [(morning: Bool, afternoon: Bool, evening: Bool)].
+        // 1) Fetch busy events for the current month (existing logic)
         let busyDays = try await EventKitFetcher.shared.initializeEventStore()
 
-        let entry = iOSWidgetEntry(date: Date(), flags: storeFlags, eventDays: busyDays)
+        // 2) Fetch holiday dates for the current month
+        let holidayDates = try await EventKitFetcher.shared.fetchHolidayDatesForCurrentMonth()
+
+        let entry = iOSWidgetEntry(
+          date: Date(),
+          flags: storeFlags,
+          eventDays: busyDays,
+          holidayDates: holidayDates
+        )
         completion(entry)
+
       } catch {
         // If an error occurs, provide fallback data
         let fallback = iOSWidgetEntry(
           date: Date(),
           flags: storeFlags,
-          eventDays: (1...30).map { _ in (false, false, false) }
+          eventDays: (1...30).map { _ in (false, false, false) },
+          holidayDates: []
         )
         completion(fallback)
       }
@@ -67,21 +84,23 @@ struct iOSWidgetProvider: TimelineProvider {
   }
 }
 
-// MARK: - 4) The SwiftUI View for a Single Timeline Entry
+// MARK: - 4) SwiftUI View for a Single Timeline Entry
 struct iOSWidgetExtensionEntryView: View {
-    let entry: iOSWidgetEntry
-    @Environment(\.widgetFamily) var family
-    
-    var body: some View {
-        VStack(spacing: 0) {
-          
-//            CalendarDateTitle()
+  let entry: iOSWidgetEntry
+  @Environment(\.widgetFamily) var family
 
-            CalendarStaticView(healthFlags: entry.flags, busyDays: entry.eventDays)
-                
-        }
-        .containerBackground(.black, for: .widget)
+  var body: some View {
+    VStack(spacing: 0) {
+      // If you have a shared CalendarStaticView that supports holiday logic:
+      CalendarStaticView(
+        healthFlags: entry.flags,
+        busyDays: entry.eventDays,
+        holidayDates: entry.holidayDates // pass holiday dates here
+      )
     }
+    // If you want a background color for the widget:
+    .containerBackground(.black, for: .widget)
+  }
 }
 
 // MARK: - 5) The Widget Configuration

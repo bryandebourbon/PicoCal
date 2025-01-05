@@ -294,3 +294,59 @@ extension EventWrapper {
 
   }
 }
+
+extension EventKitFetcher {
+    /// Returns a set of Dates (just the date without time) that are holidays in the current month.
+    func fetchHolidayDatesForCurrentMonth() async throws -> Set<Date> {
+        let calendar = Calendar.current
+        
+        // 1) Identify holiday calendars:
+        let allCalendars = Self.store.calendars(for: .event)
+        let holidayCalendars = allCalendars.filter { cal in
+            // Adjust this matching as needed (e.g. "US Holidays", "National Holidays", etc.)
+            cal.title.localizedCaseInsensitiveContains("holiday")
+        }
+        
+        guard !holidayCalendars.isEmpty else {
+            print("[EventKit] No holiday calendars found.")
+            return []
+        }
+        
+        // 2) Compute the start/end of the month (similar to your existing fetchEvents logic).
+        let components = calendar.dateComponents([.year, .month], from: Date())
+        guard let startDate = calendar.date(from: components) else {
+            print("[EventKit] Could not compute startDate from components: \(components)")
+            return []
+        }
+        
+        var endComponents = DateComponents()
+        endComponents.month = 1
+        endComponents.day = -1
+        
+        guard let endDate = calendar.date(byAdding: endComponents, to: startDate) else {
+            print("[EventKit] Could not compute endDate by adding endComponents to startDate.")
+            return []
+        }
+        
+        // 3) Build a predicate *only* for the holiday calendars:
+        let predicate = Self.store.predicateForEvents(
+            withStart: startDate,
+            end: endDate,
+            calendars: holidayCalendars
+        )
+        
+        // 4) Fetch holiday events for the current month
+        let holidayEvents = try await withCheckedThrowingContinuation { continuation in
+            let events = Self.store.events(matching: predicate)
+            continuation.resume(returning: events)
+        }
+        
+        // 5) Convert each event's start date (or perhaps all days in the event if it spans multiple days)
+        //    to a base "yyyy-MM-dd" date. This example just uses the event's start date truncated to midnight.
+        let holidayDates: Set<Date> = Set(holidayEvents.map { event in
+            calendar.startOfDay(for: event.startDate)
+        })
+        
+        return holidayDates
+    }
+}

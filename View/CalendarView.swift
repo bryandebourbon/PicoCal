@@ -47,19 +47,19 @@ struct CalendarStaticView: View {
   }
 
 private func fullMonthContent() -> [AnyView] {
-      let startOfMonth = calendar.startOfMonth(for: Date())
-      let dayRange = calendar.range(of: .day, in: .month, for: startOfMonth) ?? (1..<1)
+    let startOfMonth = calendar.startOfMonth(for: Date())
+    let dayRange = calendar.range(of: .day, in: .month, for: startOfMonth) ?? (1..<1)
 
-      var dayViews: [AnyView] = []
+    var dayViews: [AnyView] = []
 
-      // Offset for the first weekday
-      let weekdayOfFirstDay = calendar.component(.weekday, from: startOfMonth)
-      let offset = (weekdayOfFirstDay - calendar.firstWeekday + 7) % 7
-      for _ in 0..<offset {
+    // Offset for first weekday
+    let weekdayOfFirstDay = calendar.component(.weekday, from: startOfMonth)
+    let offset = (weekdayOfFirstDay - calendar.firstWeekday + 7) % 7
+    for _ in 0..<offset {
         dayViews.append(AnyView(Color.clear))
-      }
+    }
 
-      for dayOfMonth in dayRange {
+    for dayOfMonth in dayRange {
         let currentDate = calendar.date(byAdding: .day, value: dayOfMonth - 1, to: startOfMonth)!
         let isToday = calendar.isDateInToday(currentDate)
         let isPast = isDateInPast(currentDate)
@@ -67,30 +67,54 @@ private func fullMonthContent() -> [AnyView] {
 
         let isComplete = index < healthFlags.count ? healthFlags[index] : false
         let busyPeriods = index < busyDays.count ? busyDays[index] : (false, false, false)
-
-        // Check if this day is in the holiday set:
         let dayMidnight = calendar.startOfDay(for: currentDate)
         let isHoliday = holidayDates.contains(dayMidnight)
 
-        dayViews.append(
-          AnyView(
-            DefaultDayBlock(
-              dayOfMonth: dayOfMonth,
-              isToday: isToday,
-              isPast: isPast,
-              isComplete: isComplete,
-              isBusyMorning: busyPeriods.0,
-              isBusyAfternoon: busyPeriods.1,
-              isBusyEvening: busyPeriods.2,
-              // Pass isHoliday into DefaultDayBlock
-              isHoliday: isHoliday
-            )
-          )
-        )
-      }
+        let dayBlock = NavigationLink(
+            destination: DefaultDayBlock(
+                dayOfMonth: dayOfMonth,
+                isToday: isToday,
+                isPast: isPast,
+                isComplete: isComplete,
+                isBusyMorning: busyPeriods.0,
+                isBusyAfternoon: busyPeriods.1,
+                isBusyEvening: busyPeriods.2,
+                isHoliday: isHoliday
+            ).ignoresSafeArea(),
+            label: {
+                DefaultDayBlock(
+                    dayOfMonth: dayOfMonth,
+                    isToday: isToday,
+                    isPast: isPast,
+                    isComplete: isComplete,
+                    isBusyMorning: busyPeriods.0,
+                    isBusyAfternoon: busyPeriods.1,
+                    isBusyEvening: busyPeriods.2,
+                    isHoliday: isHoliday
+                )
+            }
+        ).buttonStyle(.plain)
 
-      return dayViews
+#if canImport(WidgetKit)
+        dayViews.append(AnyView(DefaultDayBlock(
+            dayOfMonth: dayOfMonth,
+            isToday: isToday,
+            isPast: isPast,
+            isComplete: isComplete,
+            isBusyMorning: busyPeriods.0,
+            isBusyAfternoon: busyPeriods.1,
+            isBusyEvening: busyPeriods.2,
+            isHoliday: isHoliday)))
+    
+#else
+    
+    dayViews.append(dayBlock)
+#endif
     }
+    
+    return dayViews
+}
+
 
 
   private func isDateInPast(_ date: Date) -> Bool {

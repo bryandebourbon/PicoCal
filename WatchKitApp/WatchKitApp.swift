@@ -15,8 +15,7 @@ struct WatchKitApp: App {
 struct WatchContentView: View {
   @StateObject var viewModel = CentralViewModel()
   var body: some View {
-    VStack {
-//      CalendarDateTitle()
+      NavigationView  {
         CalendarView(viewModel: viewModel).ignoresSafeArea()
             .onAppear {
                 
@@ -25,7 +24,6 @@ struct WatchContentView: View {
                     WidgetCenter.shared.reloadAllTimelines()
                 }
           }
-//      }
     }
   }
        

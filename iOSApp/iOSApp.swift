@@ -33,16 +33,23 @@ struct iOSContentView: View {
 
     var body: some View {
         ZStack{
-            VStack {
-                CalendarView(viewModel: vm)
-                
+            VStack{
+                NavigationView  {
+                    CalendarView(viewModel: vm).onAppear{
+                        Task {
+                            await vm.refresh()
+                            WidgetCenter.shared.reloadAllTimelines()
+                        }
+                    }
+                    
+                    
+                }
                 Button("Sync") {
                     Task {
                         await vm.refresh()
                         WidgetCenter.shared.reloadAllTimelines()
                     }
-                }
-            }
+                }}
                 if vm.showSyncCompletedPopup {
                     SyncCompletedToast {
                         // onHide callback:

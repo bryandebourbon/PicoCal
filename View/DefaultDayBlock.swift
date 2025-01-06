@@ -41,7 +41,9 @@ struct DefaultDayBlock: View {
       }
       .background((isComplete ? Color("goalComplete") : Color("default")).opacity(0.6))
       .overlay(
-        isPast ? isComplete ?  Color("goalComplete") .opacity(0.5):Color("todayIndicator").opacity(0.5) : Color.clear
+        isPast ?
+//        isComplete ?  Color("goalComplete").opacity(0.5):
+            Color("todayIndicator").opacity(0.5) : Color.clear
       )
     }
   }

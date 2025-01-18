@@ -16,7 +16,7 @@ struct CalendarDateTitle: View {
   var body: some View {
     Text(currentDate)
       .bold()
-      .font(.system(size: 12))
+      .font(.system(size: 11))
       .foregroundColor(Color("fontColor"))
       .frame(minHeight: 0)
   }

@@ -54,24 +54,33 @@ final class CentralViewModel: ObservableObject, CalendarViewProviding {
 import WatchConnectivity
 
 extension CentralViewModel {
-  func refreshForWatch() async {
-    // 1) Refresh all data from Health + EventKit via the shared DataManager
+
+    func refreshForWatch() async {
+    // 1) Refresh from HealthKit + EventKit
     await dataManager.refreshAllData()
 
-    // 2) Merge the newly fetched HealthKit data with the watch’s phone.local data
+    // 2a) Retrieve what's currently in sharedFlags (could have older true days)
+    let existingFlags = dataManager.store.retrieve(forKey: "sharedFlags")
+
+    // 2b) The newly fetched watch data
     let newHealthData = dataManager.store.local
+
+    // 2c) The phone’s data
     let phoneLocal = WatchToPhone.shared.local
-    let merged = orBooleanArrays(newHealthData, phoneLocal)
 
-    // 3) Persist if needed
-    dataManager.store.persist(data: merged, forKey: "sharedFlags")
-    self.healthFlags = merged
+    // 3) Combine all three: existingFlags ∨ newWatchData ∨ phoneLocal
+    let mergedStep1 = orBooleanArrays(existingFlags, newHealthData)
+    let mergedStep2 = orBooleanArrays(mergedStep1, phoneLocal)
 
-    // 4) Build busy days
+    // 4) Persist the final merged result
+    dataManager.store.persist(data: mergedStep2, forKey: "sharedFlags")
+    self.healthFlags = mergedStep2
+
+    // 5) Update your busyDays, holidayDates, etc.
     buildBusyDays()
-      
-      await buildHolidayDays()
+    await buildHolidayDays()
   }
+
 }
 
 #else
@@ -106,16 +115,18 @@ extension CentralViewModel {
 
 #endif
 
-// MARK: - Helper
+/// Merges two arrays of Booleans, preserving `true` values.
+/// Once a day is `true`, it stays `true` going forward.
 func orBooleanArrays(_ array1: [Bool], _ array2: [Bool]) -> [Bool] {
-  let maxLength = max(array1.count, array2.count)
-  var resultArray: [Bool] = []
-  
-  for i in 0..<maxLength {
-    let value1 = i < array1.count ? array1[i] : false
-    let value2 = i < array2.count ? array2[i] : false
-    resultArray.append(value1 || value2)
-  }
-  
-  return resultArray
+    let maxLength = max(array1.count, array2.count)
+    var result = [Bool](repeating: false, count: maxLength)
+
+    for i in 0..<maxLength {
+        let val1 = (i < array1.count) ? array1[i] : false
+        let val2 = (i < array2.count) ? array2[i] : false
+        // ALWAYS OR them so once `true` is set, it remains true
+        result[i] = val1 || val2
+    }
+
+    return result
 }

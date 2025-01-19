@@ -99,7 +99,7 @@ struct iOSWidgetExtensionEntryView: View {
       )
     }
     // If you want a background color for the widget:
-    .containerBackground(.black, for: .widget)
+    .containerBackground(Color("background"), for: .widget)
   }
 }
 
@@ -113,6 +113,8 @@ struct iOSWidgetExtension: Widget {
     }
     .configurationDisplayName("PicoCal (iPhone)")
     .description("A compact iPhone widget for PicoCal.")
-    .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
+    .supportedFamilies(
+        [.systemSmall, .systemMedium, .systemLarge, .systemExtraLarge]
+    )
   }
 }

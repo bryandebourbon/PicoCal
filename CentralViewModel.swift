@@ -2,11 +2,11 @@ import SwiftUI
 import Combine
 
 @MainActor
-final class CentralViewModel: ObservableObject, CalendarViewProviding {
+final class CentralViewModel: ObservableObject, @preconcurrency CalendarViewProviding {
   @Published var healthFlags: [Bool] = []
   @Published var busyDays: [(Bool, Bool, Bool)] = []
   @Published var showSyncCompletedPopup = false
-    @Published var holidayDates: Set<Date> = []
+  @Published var holidayDates: Set<Date> = []
   private let dataManager = DataManager.shared
     
 

@@ -58,7 +58,7 @@ struct DefaultDayBlock: View {
         )
         .frame(minHeight: WATCH_WIDGET_BUSY_BAR_HEIGHT)
       }
-      .background((isComplete ? Color("goalComplete") : Color("default")).opacity(0.6))
+      // .background((isComplete ? Color("goalComplete") : Color("default")).opacity(0.6))
       .overlay(overlayColor(isPast: isPast, isComplete: isComplete))
     }
   }

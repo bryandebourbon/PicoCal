@@ -10,19 +10,17 @@ struct EventPlot: View {
     var body: some View {
         let events = eventsForThisDay()
         VStack(spacing: 0) {
-
             GeometryReader { geometry in
-                let isLandscape = geometry.size.width > geometry.size.height
+                let lineHeight: CGFloat = 14 // Adjust this value based on your font size
                 
-                if isLandscape {
+                if geometry.size.height < lineHeight {
                     HStack(spacing: 0) {
-                      ForEach(events) { event in
-                        Rectangle()
-                          .fill(event.calendarcolor)
-                          .frame(minWidth: 4)
-                      }
+                        ForEach(events) { event in
+                            Rectangle()
+                                .fill(event.calendarcolor)
+                                .frame(minWidth: 4)
+                        }
                     }
-
                 } else {
                     VStack(alignment: .leading, spacing: 0) {
                         ForEach(events) { event in
@@ -31,11 +29,15 @@ struct EventPlot: View {
                                   .fill(event.calendarcolor)
                                   .frame(maxWidth: 4)
                                 Text(event.title)
-                                    .font(.system(size: 10) )
-                            }
+                                    .font(.system(size: 10))
+                                    .lineLimit(1)
+                                    .frame(height: lineHeight)
+                            }.frame(height: lineHeight)
                         }
+
                     }
                 }
+
             }
         }
     }

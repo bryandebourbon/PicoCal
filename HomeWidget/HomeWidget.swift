@@ -95,16 +95,47 @@ struct iOSWidgetExtensionEntryView: View {
   @Environment(\.widgetFamily) var family
 
   var body: some View {
-    VStack(spacing: 0) {
-      // If you have a shared CalendarStaticView that supports holiday logic:
-      CalendarStaticView(
-        healthFlags: entry.flags,
-        busyDays: entry.eventDays,
-        holidayDates: entry.holidayDates // pass holiday dates here
-      )
+    switch family {
+    case .accessoryCircular:
+      // Circular Lock Screen widget
+      ZStack {
+        // Use your existing calendar logic but simplified for tiny circular display
+        CalendarStaticView(
+          healthFlags: entry.flags,
+          busyDays: entry.eventDays,
+          holidayDates: entry.holidayDates
+        )
+        .widgetAccentable()
+      } .containerBackground(Color("background"), for: .widget)
+      
+    case .accessoryRectangular:
+      // Rectangular Lock Screen widget
+      VStack {
+        CalendarStaticView(
+          healthFlags: entry.flags,
+          busyDays: entry.eventDays,
+          holidayDates: entry.holidayDates
+        )
+      }
+      .widgetAccentable()
+      .containerBackground(Color("background"), for: .widget)
+
+    case .accessoryInline:
+      // Inline Lock Screen widget (text only)
+      Text("Today: \(entry.flags.filter { $0 }.count) completed")
+            .containerBackground(Color("background"), for: .widget)
+
+    default:
+      // Your existing Home Screen widget layout
+      VStack(spacing: 0) {
+        CalendarStaticView(
+          healthFlags: entry.flags,
+          busyDays: entry.eventDays,
+          holidayDates: entry.holidayDates
+        )
+      }
+      .containerBackground(Color("background"), for: .widget)
     }
-    // If you want a background color for the widget:
-    .containerBackground(Color("background"), for: .widget)
   }
 }
 
@@ -118,8 +149,15 @@ struct iOSWidgetExtension: Widget {
     }
     .configurationDisplayName("PicoCal (iPhone)")
     .description("A compact iPhone widget for PicoCal.")
-    .supportedFamilies(
-        [.systemSmall, .systemMedium, .systemLarge, .systemExtraLarge]
-    )
+    .supportedFamilies([
+      .systemSmall,
+      .systemMedium, 
+      .systemLarge,
+      .systemExtraLarge,
+      // Add Lock Screen widget families:
+      .accessoryCircular,
+      .accessoryRectangular,
+      .accessoryInline
+    ])
   }
 }

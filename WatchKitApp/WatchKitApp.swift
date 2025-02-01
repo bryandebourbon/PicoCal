@@ -17,7 +17,7 @@ struct WatchContentView: View {
   var body: some View {
     NavigationView {
       CalendarView(viewModel: viewModel)
-        .ignoresSafeArea()
+//        .ignoresSafeArea()
         .onAppear {
           refreshData()
         }

@@ -80,7 +80,8 @@ private func fullMonthContent() -> [AnyView] {
                 isBusyAfternoon: busyPeriods.1,
                 isBusyEvening: busyPeriods.2,
                 isHoliday: isHoliday
-            ).ignoresSafeArea(),
+            )//.ignoresSafeArea()
+            ,
             label: {
                 DefaultDayBlock(
                     dayOfMonth: dayOfMonth,

@@ -14,10 +14,10 @@ final class Health {
     /// The single shared instance.
     static let shared = Health()
     
-    /// The underlying HKHealthStore we’ll use.
+    /// The underlying HKHealthStore we'll use.
     let healthStore = HKHealthStore()
     
-    /// The latest “calories by month” flags, updated after calling `fetchCaloriesByMonth()`.
+    /// The latest "calories by month" flags, updated after calling `fetchCaloriesByMonth()`.
     private(set) var caloriesByMonth: [Bool] = []
     
     /// Make the initializer private so only `Health.shared` can be used.
@@ -57,8 +57,15 @@ final class Health {
     }
 
     /// Fetch active energy (calories) for the current month.
-    /// Returns an array of Booleans. Each `Bool` indicates whether that day’s calories > 500.
+    /// Returns an array of Booleans. Each `Bool` indicates whether that day's calories > 500.
     func fetchCaloriesByMonth() async throws -> [Bool] {
+        // Add this at the start of the method
+        if shouldClearHealthData() {
+            self.caloriesByMonth = []
+            // Clear the stored data
+            DataManager.shared.store.persist(data: [], forKey: "sharedFlags")
+        }
+        
         // 1) Make sure HealthKit is available on this device.
 //        guard HKHealthStore.isHealthDataAvailable() else {
 //            print("[Health] HealthKit is not available on this device.")
@@ -159,5 +166,34 @@ final class Health {
         print("[Health] Finished fetching daily flags: \(dailyFlags)")
         
         return dailyFlags
+    }
+
+    func shouldClearHealthData() -> Bool {
+        let defaults = UserDefaults.standard
+        let calendar = Calendar.current
+        let now = Date()
+        
+        // Get stored month/year
+        let lastMonth = defaults.integer(forKey: "lastHealthMonth")
+        let lastYear = defaults.integer(forKey: "lastHealthYear")
+        
+        // Get current month/year
+        let currentMonth = calendar.component(.month, from: now)
+        let currentYear = calendar.component(.year, from: now)
+        
+        // If we have no stored date or the month/year has changed
+        if lastMonth == 0 || lastYear == 0 ||
+           lastMonth != currentMonth ||
+           lastYear != currentYear {
+            
+            // Update stored month/year
+            defaults.set(currentMonth, forKey: "lastHealthMonth")
+            defaults.set(currentYear, forKey: "lastHealthYear")
+            
+            print("[Health] Month changed from \(lastMonth)/\(lastYear) to \(currentMonth)/\(currentYear). Clearing health data.")
+            return true
+        }
+        
+        return false
     }
 }

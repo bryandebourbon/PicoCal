@@ -51,7 +51,12 @@ struct iOSWidgetProvider: TimelineProvider {
 
   /// Fetch the data needed for this widget, including holiday dates.
   private func fetchDataForWidget(completion: @escaping (iOSWidgetEntry) -> Void) {
-    // Retrieve any local flags you have stored
+    // Check if we need to clear data
+    if Health.shared.shouldClearHealthData() {
+        Store.shared.persist(data: [], forKey: "sharedFlags")
+    }
+    
+    // Get potentially cleared data
     let storeFlags = Store.shared.retrieve(forKey: "sharedFlags")
 
     Task {

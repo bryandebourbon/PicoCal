@@ -42,6 +42,17 @@ struct WatchWidgetProvider: TimelineProvider {
   }
 
   func getTimeline(in context: Context, completion: @escaping (Timeline<WatchWidgetEntry>) -> Void) {
+    // Add month check and clear logic
+    let currentMonth = Calendar.current.component(.month, from: Date())
+    let defaults = UserDefaults.standard
+    let lastMonth = defaults.integer(forKey: "lastCheckedMonth")
+    
+    if lastMonth != currentMonth {
+      // Clear health data when month changes
+      defaults.removeObject(forKey: "healthData")
+      defaults.set(currentMonth, forKey: "lastCheckedMonth")
+    }
+    
     // A real fetch of data for your watch widget:
     fetchDataForWidget { entry in
       // Decide how long before the widget updates again
@@ -53,6 +64,11 @@ struct WatchWidgetProvider: TimelineProvider {
 
   /// 3) Bridge the async calls from `DataManager` or `EventKitFetcher` into the widget’s callback.
   private func fetchDataForWidget(completion: @escaping (WatchWidgetEntry) -> Void) {
+    // Check if we need to clear data
+    if Health.shared.shouldClearHealthData() {
+        Store.shared.persist(data: [], forKey: "sharedFlags")
+    }
+    
     let storeFlags = Store.shared.retrieve(forKey: "sharedFlags")
     
     Task {

@@ -5,7 +5,8 @@ import HealthKit
 @main
 struct iOSApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-
+    @Environment(\.scenePhase) private var scenePhase
+    
     // 1) Store whether onboarding is complete
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
     
@@ -16,10 +17,26 @@ struct iOSApp: App {
             if hasCompletedOnboarding {
                 // 2) Show your main view if onboarding is finished
                 iOSContentView(vm: viewModel)
+                    .onAppear {
+                        refreshData()
+                    }
+                    // Add scene phase handling
+                    .onChange(of: scenePhase) { newPhase in
+                        if newPhase == .active {
+                            refreshData()
+                        }
+                    }
             } else {
                 // 3) Otherwise, show the onboarding flow
                 OnboardingView(hasCompletedOnboarding: $hasCompletedOnboarding, vm: viewModel)
             }
+        }
+    }
+    
+    private func refreshData() {
+        Task {
+            await viewModel.refresh()
+            WidgetCenter.shared.reloadAllTimelines()
         }
     }
 }
@@ -35,14 +52,7 @@ struct iOSContentView: View {
         ZStack{
             VStack{
                 NavigationView  {
-                    CalendarView(viewModel: vm).onAppear{
-                        Task {
-                            await vm.refresh()
-                            WidgetCenter.shared.reloadAllTimelines()
-                        }
-                    }
-                    
-                    
+                    CalendarView(viewModel: vm)
                 }
                 Button("Sync") {
                     Task {

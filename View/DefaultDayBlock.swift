@@ -22,7 +22,7 @@ struct DefaultDayBlock: View {
             }
         #else
             if isPast {
-                return Color("todayIndicator").opacity(0.5)
+                return Color("todayIndicator").opacity(0.6)
             }
         #endif
         return Color.clear
@@ -38,15 +38,22 @@ struct DefaultDayBlock: View {
           Text("\(dayOfMonth)")
             .bold()
             .font(.system(size: DATE_TITLE_HEIGHT))
+#if os(iOS) && WIDGET_TARGET
+    .lineLimit(1)
+    .minimumScaleFactor(0.75)
+#endif
+
             .foregroundColor(
               isHoliday ? Color("holidayFontColor") : Color("fontColor")
             )
+            #if os(watchOS)
             .background(
               (isComplete ? Color("goalComplete") : Color("default"))
                 .opacity(0.6)
                 .clipShape(Circle())
                 .padding(-2)
             )
+            #endif
         }
         .frame(height: DATE_TITLE_HEIGHT - WATCH_WIDGET_BUSY_BAR_HEIGHT)
 

@@ -16,6 +16,10 @@ struct CalendarDateTitle: View {
       .font(.system(size: 11))
       .foregroundColor(Color("fontColor"))
       .frame(minHeight: 0)
+      #if os(iOS)
+      .lineLimit(1)
+      .minimumScaleFactor(0.75)
+      #endif
       .onAppear {
         updateDate()
       }
@@ -28,12 +32,6 @@ struct CalendarDateTitle: View {
   
   private func updateDate() {
     currentDateString = dateFormatter.string(from: Date()).uppercased()
-  }
-}
-
-struct CalendarDateTitle_Previews: PreviewProvider {
-  static var previews: some View {
-    CalendarDateTitle()
   }
 }
 

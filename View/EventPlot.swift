@@ -11,7 +11,7 @@ struct EventPlot: View {
         let events = eventsForThisDay()
         VStack(spacing: 0) {
             GeometryReader { geometry in
-                let lineHeight: CGFloat = 14 // Adjust this value based on your font size
+                let lineHeight: CGFloat = 10 // Adjust this value based on your font size
                 
                 if geometry.size.height < lineHeight {
                     HStack(spacing: 0) {
@@ -31,6 +31,9 @@ struct EventPlot: View {
                                 Text(event.title)
                                     .font(.system(size: 10))
                                     .lineLimit(1)
+#if os(watchOS)
+    .minimumScaleFactor(0.75)
+#endif
                                     .frame(height: lineHeight)
                             }.frame(height: lineHeight)
                         }
